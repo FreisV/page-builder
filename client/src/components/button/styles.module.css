@@ -1,0 +1,21 @@
+.button {
+  max-width: 150px;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9em;
+  background-color: var(--primary-color);
+  font-weight: 500;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: #f0f0f0;
+  cursor: auto;
+  color: rgb(83, 83, 83);
+}
