@@ -2,3 +2,8 @@
 	margin: 0;
 	font-family: 'Montserrat', sans-serif;
 }
+
+:root {
+  --primary-color: rgb(0, 132, 255);
+	--hover-color: rgb(49, 155, 255);
+}
