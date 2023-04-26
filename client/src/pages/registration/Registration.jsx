@@ -65,7 +65,7 @@ const Registration = () => {
             minLength="3"
             maxLength="32"
             className={styles.input}
-            placeholder="Имя"
+            placeholder="Имя пользователя"
             required
           />
           <input
