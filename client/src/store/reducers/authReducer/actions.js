@@ -28,9 +28,17 @@ export const logout = () => ({
 export const login = (username, password) => async (dispatch) => {
   dispatch(loginStart());
   try {
-    console.log("here");
     const res = await AuthService.login(username, password);
-    console.log("here2");
+    dispatch(loginSuccess(res.data));
+  } catch (err) {
+    dispatch(loginFailure(err));
+  }
+};
+
+export const registration = (username, email, password) => async (dispatch) => {
+  dispatch(loginStart());
+  try {
+    const res = await AuthService.registration(username, email, password);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure(err));
