@@ -4,6 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGOUT,
 } from "./actionTypes";
+import AuthService from "../../../services/AuthService";
 
 export const loginStart = () => ({
   type: LOGIN_START,
@@ -23,3 +24,15 @@ export const logout = () => ({
   type: LOGOUT,
   payload: null,
 });
+
+export const login = (username, password) => async (dispatch) => {
+  dispatch(loginStart());
+  try {
+    console.log("here");
+    const res = await AuthService.login(username, password);
+    console.log("here2");
+    dispatch(loginSuccess(res.data));
+  } catch (err) {
+    dispatch(loginFailure(err));
+  }
+};
