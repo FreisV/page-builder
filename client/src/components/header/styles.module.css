@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 90%;
+}
+
+.logo {
+  font-size: 2em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 20px);
+  padding: 10px;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.profile:hover {
+  cursor: pointer;
+  background-color: var(--hover-color);
+}
