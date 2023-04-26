@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Registration from "./pages/registration/Registration";
+import Projects from "./pages/projects/Projects";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
       <Route
           path="/projects"
+          element={user ? <Projects /> : <Navigate replace to="/login" />}
         />
         <Route
           path="/login"
