@@ -6,7 +6,6 @@ export default class AuthService {
   }
 
   static async login(username, password) {
-    console.log(username);
     return api.post("/login", { username, password });
   }
 
