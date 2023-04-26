@@ -6,7 +6,7 @@ import {
 } from "./actionTypes";
 
 const INITIAL_STATE = {
-  accessToken: JSON.parse(localStorage.getItem("token")) || null,
+  accessToken: localStorage.getItem("accessToken") || null,
   user: JSON.parse(localStorage.getItem("user")) || null,
   isFetching: false,
   error: false,
@@ -23,7 +23,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
       };
     case LOGIN_SUCCESS:
       return {
-        accessToken: action.payload.token,
+        accessToken: action.payload.accessToken,
         user: action.payload.user,
         isFetching: false,
         error: false,
