@@ -19,8 +19,6 @@ module.exports = async function (req, res, next) {
       return next(ApiError.UnauthorizedError());
     }
 
-    console.log(userData);
-
     const user = await UserModel.findById(userData.id);
     if (!user.isActivated) {
       return next(ApiError.UnverifiedEmailError());
