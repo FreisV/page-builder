@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  max-width: 90%;
+  margin: 20px 0;
+  font-weight: 500;
+}
+
+.form > * {
+  margin: 20px 0;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 5px 0;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.label {
+  align-self: flex-start;
+  cursor: pointer;
+}
