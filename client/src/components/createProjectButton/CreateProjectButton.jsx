@@ -1,8 +1,8 @@
+
 import React from 'react'
 import styles from "./styles.module.css";
 
-
-const CreateProject = () => {
+const CreateProjectButton = () => {
   return (
     <button className={styles.wrapper}>
       Создать новый проект
@@ -10,4 +10,4 @@ const CreateProject = () => {
   )
 }
 
-export default CreateProject
+export default CreateProjectButton

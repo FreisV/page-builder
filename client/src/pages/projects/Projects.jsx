@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./styles.module.css";
 import Header from '../../components/header/Header';
 import { useSelector } from 'react-redux';
-import CreateProject from '../../components/createProject/CreateProject'
+import CreateProjectButton from '../../components/createProjectButton/CreateProjectButton';
 
 
 const Projects = () => {
@@ -12,7 +12,7 @@ const Projects = () => {
     <>
       <Header/>
       <main className={styles.wrapper}>
-        <CreateProject/>
+        <CreateProjectButton/>
       </main>
     </>
   )
