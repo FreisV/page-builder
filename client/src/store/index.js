@@ -28,7 +28,6 @@ const store = configureStore({
 });
 
 store.subscribe(() => {
-  console.log(store.getState());
   const { accessToken, user } = store.getState().auth;
   saveAccessTokenToLocalStorage(accessToken);
   saveUserDataToLocalStorage(user);
