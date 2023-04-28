@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 
 const ProjectLink = ({ project }) => {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const ProjectLink = ({ project }) => {
     <Link className={styles.link} to={`/project/${project.id}`} >
       {project.name}
       <button className={styles.settings} onClick={openProjectSettings}>
-        <i class="fa-solid fa-ellipsis"></i>
+      <FontAwesomeIcon icon={faEllipsis} />
       </button>
     </Link>
   );
