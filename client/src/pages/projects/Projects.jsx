@@ -1,21 +1,19 @@
-import React from 'react'
+import React from "react";
 import styles from "./styles.module.css";
-import Header from '../../components/header/Header';
-import { useSelector } from 'react-redux';
-import CreateProjectButton from '../../components/createProjectButton/CreateProjectButton';
-
+import Header from "../../components/header/Header";
+import CreateProjectButton from "../../components/createProjectButton/CreateProjectButton";
+import ProjectList from "../../components/projectList/ProjectList";
 
 const Projects = () => {
-  const {accessToken, user} = useSelector(state => state.auth);
-
   return (
     <>
-      <Header/>
+      <Header />
       <main className={styles.wrapper}>
-        <CreateProjectButton/>
+        <ProjectList />
+        <CreateProjectButton />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
