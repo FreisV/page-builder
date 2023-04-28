@@ -20,7 +20,7 @@ export const loginFailure = (payload) => ({
   payload,
 });
 
-export const logout = () => ({
+export const logoutAction = () => ({
   type: LOGOUT,
   payload: null,
 });
@@ -44,3 +44,12 @@ export const registration = (username, email, password) => async (dispatch) => {
     dispatch(loginFailure(err));
   }
 };
+
+export const logout = () => async (dispatch) => {
+  try {
+    const res = await AuthService.logout();
+    dispatch(logoutAction());
+  } catch (e) {
+    console.log(e);
+  } 
+}
