@@ -16,7 +16,6 @@ const Login = () => {
   const { isFetching, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    console.log(error);
     if (error) {
       setErrorMessage(error?.response.data.message);
     }
