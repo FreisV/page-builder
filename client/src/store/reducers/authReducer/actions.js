@@ -29,7 +29,6 @@ export const login = (username, password) => async (dispatch) => {
   dispatch(loginStart());
   try {
     const res = await AuthService.login(username, password);
-    console.log(res.data);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure(err));
