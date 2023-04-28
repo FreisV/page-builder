@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const Button = ({ type, children }) => {
+const Button = ({ type, children, isRed }) => {
   return (
-    <button className={styles.button} type={type}>
+    <button
+      className={isRed ? `${styles.button} ${styles.red}` : styles.button}
+      type={type}
+    >
       {children}
     </button>
   );

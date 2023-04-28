@@ -7,6 +7,7 @@
   background-color: var(--primary-color);
   font-weight: 500;
   color: #fff;
+  transition: 0.3s;
 }
 
 .button:hover {
@@ -18,4 +19,12 @@
   background-color: #f0f0f0;
   cursor: auto;
   color: rgb(83, 83, 83);
+}
+
+.button.red {
+  background-color: #ff4141;
+}
+
+.button.red:hover {
+  background-color: #ff6969;
 }
