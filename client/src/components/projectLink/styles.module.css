@@ -1,0 +1,37 @@
+.link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  width: 1040px;
+  max-width: 90%;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: white;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.link:hover {
+  background-color: var(--hover-color);
+}
+
+.settings {
+  border: none;
+  font-size: 1.5em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.settings:hover {
+  rotate: 90deg;
+}
