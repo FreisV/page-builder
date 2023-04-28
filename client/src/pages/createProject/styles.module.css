@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  margin-top: 20px;
+  justify-content: center;
+  height: auto;
+  min-height: calc(100vh - 70px);
 }
 
 .title {
