@@ -16,6 +16,7 @@ class ProjectService {
       owner: userId,
       name,
       isOpen,
+      updatedAt: Date.now(),
     });
 
     const projectDto = new ProjectDto(project);
@@ -33,9 +34,11 @@ class ProjectService {
       throw ApiError.BadRequest("Вы не можете редактировать чужой проект");
     }
 
-    await project.updateOne({ $set: { name, isOpen } });
-
-    const updatedProject = await ProjectModel.findById(id);
+    const updatedProject = await ProjectModel.findByIdAndUpdate(
+      id,
+      { $set: { name, isOpen, updatedAt: Date.now() } },
+      { new: true }
+    );
     const projectDto = new ProjectDto(updatedProject);
 
     return projectDto;
@@ -61,7 +64,9 @@ class ProjectService {
   }
 
   async getUserProjects(userId) {
-    const projects = await ProjectModel.find({ owner: userId });
+    const projects = await ProjectModel.find({ owner: userId }).sort({
+      updatedAt: "desc",
+    });
 
     const projectsDtos = projects.map((project) => new ProjectDto(project));
     return projectsDtos;
