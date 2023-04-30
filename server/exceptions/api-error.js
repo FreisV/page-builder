@@ -13,7 +13,11 @@ module.exports = class ApiError extends Error {
   }
 
   static UnverifiedEmailError() {
-    return new ApiError(401, "Пользователь не подтвердил свою почту");
+    return new ApiError(403, "Пользователь не подтвердил свою почту");
+  }
+
+  static AccessDenied() {
+    return new ApiError(403, "У вас нет доступа к данной функции");
   }
 
   static BadRequest(message, errors = []) {
