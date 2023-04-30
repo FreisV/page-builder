@@ -33,5 +33,6 @@ router.post("/projects/:id/blocks", authMiddleware, checkProjectOwnerMiddleware,
 router.put("/projects/:id/blocks", authMiddleware, checkProjectOwnerMiddleware, blockController.update);
 router.get("/projects/:id/blocks", authMiddleware, blockController.getBlocks);
 router.get("/projects/:id/blocks/:blockId", authMiddleware, blockController.getBlock);
+router.delete("/projects/:id/blocks/:blockId", authMiddleware, checkProjectOwnerMiddleware, blockController.delete)
 
 module.exports = router;

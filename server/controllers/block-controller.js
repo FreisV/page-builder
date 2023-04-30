@@ -55,6 +55,19 @@ class BlockController {
       next(e);
     }
   }
+
+  async delete(req, res, next) {
+    try {
+      const projectId = req.params.id;
+      const blockId = req.params.blockId;
+
+      const deletedBlock = await blockService.delete(projectId, blockId);
+
+      res.json(deletedBlock);
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = new BlockController();

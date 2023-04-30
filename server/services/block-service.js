@@ -53,7 +53,7 @@ class BlockService {
     const blocks = await BlockModel.find({ projectId }).sort({
       blockNumber: "asc",
     });
-    
+
     const blocksDtos = blocks.map((block) => new BlockDto(block));
 
     return blocksDtos;
@@ -69,6 +69,27 @@ class BlockService {
     const blockDto = new BlockDto(block);
 
     return blockDto;
+  }
+
+  async delete(projectId, blockId) {
+    const block = await BlockModel.findById(blockId);
+
+    if (!block) {
+      throw ApiError.BadRequest("Такого блока не существует");
+    }
+    const blockNumber = block.blockNumber;
+
+    const deletedBlock = await block.deleteOne();
+
+    await BlockModel.updateMany(
+      {
+        projectId: projectId,
+        blockNumber: { $gt: blockNumber },
+      },
+      { $inc: { blockNumber: -1 } }
+    );
+
+    return deletedBlock;
   }
 }
 
