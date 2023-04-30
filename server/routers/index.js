@@ -3,7 +3,9 @@ const userController = require("../controllers/user-controller");
 const router = new Router();
 const { body } = require("express-validator");
 const authMiddleware = require("../middlewares/auth-middleware");
+const checkProjectOwnerMiddleware = require("../middlewares/check-project-owner-middleware");
 const projectController = require("../controllers/project-controller");
+const blockController = require("../controllers/block-controller")
 
 //authorization
 router.post(
@@ -21,9 +23,15 @@ router.get("/users", authMiddleware, userController.getUsers);
 
 //projects
 router.post("/projects", authMiddleware, projectController.create);
-router.put("/projects/:id", authMiddleware, projectController.update);
+router.put("/projects/:id", authMiddleware,  projectController.update);
 router.get("/projects/:id", authMiddleware, projectController.get);
 router.get("/userProjects", authMiddleware, projectController.getUserProjects);
 router.delete("/projects/:id", authMiddleware, projectController.delete);
+
+//blocks
+router.post("/projects/:id/blocks", authMiddleware, checkProjectOwnerMiddleware, blockController.create);
+router.put("/projects/:id/blocks", authMiddleware, checkProjectOwnerMiddleware, blockController.update);
+router.get("/projects/:id/blocks", authMiddleware, blockController.getBlocks);
+router.get("/projects/:id/blocks/:blockId", authMiddleware, blockController.getBlock);
 
 module.exports = router;
