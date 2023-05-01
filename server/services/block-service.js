@@ -89,7 +89,9 @@ class BlockService {
       { $inc: { blockNumber: -1 } }
     );
 
-    return deletedBlock;
+    const blockDto = new BlockDto(deletedBlock);
+
+    return blockDto;
   }
 }
 
