@@ -1,4 +1,5 @@
 const ProjectModel = require("../models/project-model");
+const BlockModel = require("../models/blocks/block-model");
 const ApiError = require("../exceptions/api-error");
 const ProjectDto = require("../dtos/project-dto");
 
@@ -81,6 +82,8 @@ class ProjectService {
     if (project.owner != userId) {
       throw ApiError.BadRequest("Вы не можете удалить чужой проект");
     }
+
+    await BlockModel.deleteMany({ projectId: project._id });
 
     const deletedProject = await project.deleteOne();
     return deletedProject;
