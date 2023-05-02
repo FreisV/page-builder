@@ -10,6 +10,7 @@ import Projects from "./pages/projects/Projects";
 import { useSelector } from "react-redux";
 import CreateProject from "./pages/createProject/CreateProject";
 import UpdateProject from "./pages/updateProject/UpdateProject";
+import Project from "./pages/project/Project";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -24,6 +25,10 @@ function App() {
         <Route
           path="/createProject"
           element={user ? <CreateProject /> : <Navigate replace to="/login" />}
+        />
+        <Route
+          path="/project/:id"
+          element={user ? <Project /> : <Navigate replace to="/login" />}
         />
         <Route
           path="/project/settings/:id"
