@@ -16,13 +16,13 @@ const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOGIN_START:
       return {
-        accessToken: null,
-        user: null,
+        ...state,
         isFetching: true,
         error: false,
       };
     case LOGIN_SUCCESS:
       return {
+        ...state,
         accessToken: action.payload.accessToken,
         user: action.payload.user,
         isFetching: false,
@@ -30,6 +30,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
       };
     case LOGIN_FAILURE:
       return {
+        ...state,
         accessToken: null,
         user: null,
         isFetching: false,
@@ -37,6 +38,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
       };
     case LOGOUT:
       return {
+        ...state,
         accessToken: null,
         user: null,
         isFetching: false,
