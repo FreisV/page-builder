@@ -16,14 +16,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
       (max, block) => (max > block.blockNumber ? max : block.blockNumber),
       0
     );
-    console.log(maxBlockNumber);
     return maxBlockNumber + 1;
   };
 
   const createNewBlock = async (type, blockNumber) => {
     if (!isFetching) {
       const newBlockNumber = blockNumber ?? getLastBlockNumber();
-      console.log(newBlockNumber);
       await dispatch(
         createBlock(params.id, { type, blockNumber: newBlockNumber })
       );
