@@ -3,6 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+  REFRESH_DATA,
 } from "./actionTypes";
 import AuthService from "../../../services/AuthService";
 
@@ -14,6 +15,11 @@ export const loginSuccess = (payload) => ({
   type: LOGIN_SUCCESS,
   payload,
 });
+
+export const refreshData = (payload) => ({
+  type: REFRESH_DATA,
+  payload
+})
 
 export const loginFailure = (payload) => ({
   type: LOGIN_FAILURE,

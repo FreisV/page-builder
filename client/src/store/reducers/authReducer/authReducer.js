@@ -3,6 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+  REFRESH_DATA,
 } from "./actionTypes";
 
 const INITIAL_STATE = {
@@ -21,6 +22,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
         error: false,
       };
     case LOGIN_SUCCESS:
+    case REFRESH_DATA:
       return {
         ...state,
         accessToken: action.payload.accessToken,
