@@ -1,0 +1,46 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  height: 70px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button.save {
+  background-color: var(--primary-color);
+}
+
+.button:hover {
+  background-color: rgb(43, 43, 43);
+}
+
+.button.save:hover {
+  background-color: var(--hover-color);
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 20px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.fields > * {
+  margin-bottom: 40px;
+}
