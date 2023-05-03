@@ -2,6 +2,7 @@ const ProjectModel = require("../models/project-model");
 const BlockModel = require("../models/blocks/block-model");
 const ApiError = require("../exceptions/api-error");
 const ProjectDto = require("../dtos/project-dto");
+const StylesModel = require("../models/styles/styles-model");
 
 class ProjectService {
   async create(userId, name, isOpen) {
@@ -83,7 +84,9 @@ class ProjectService {
       throw ApiError.BadRequest("Вы не можете удалить чужой проект");
     }
 
-    await BlockModel.deleteMany({ projectId: project._id });
+    await BlockModel.deleteMany({ projectId: id });
+    await StylesModel.deleteMany({ projectId: id });
+
 
     const deletedProject = await project.deleteOne();
     return deletedProject;
