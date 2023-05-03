@@ -3,6 +3,9 @@ const ButtonBlockModel = require("../models/blocks/button-block-model");
 const ParagraphBlockModel = require("../models/blocks/paragraph-block-model");
 const BlockModel = require("../models/blocks/block-model");
 const BlockDto = require("../dtos/block-dto");
+const ButtonStylesModel = require("../models/styles/button-styles-model");
+const ParagraphStylesModel = require("../models/styles/paragraph-styles-model");
+const StylesModel = require("../models/styles/styles-model");
 
 class BlockService {
   async create(data) {
@@ -11,9 +14,17 @@ class BlockService {
     switch (data.type) {
       case "ButtonBlock":
         block = await ButtonBlockModel.create(data);
+        await ButtonStylesModel.create({
+          blockId: block._id,
+          projectId: block.projectId,
+        });
         break;
       case "ParagraphBlock":
         block = await ParagraphBlockModel.create(data);
+        await ParagraphStylesModel.create({
+          blockId: block._id,
+          projectId: block.projectId,
+        });
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -80,6 +91,8 @@ class BlockService {
     const blockNumber = block.blockNumber;
 
     const deletedBlock = await block.deleteOne();
+
+    await StylesModel.deleteOne({ blockId });
 
     await BlockModel.updateMany(
       {
