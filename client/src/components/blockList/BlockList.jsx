@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import renderBlock from "../blocks/helpers/renderBlock";
 import CreateBlockModal from "../blocks/modals/createBlockModal/CreateBlockModal";
 import Button from "../button/Button";
-import BlockWrapper from "../blocks/blockWrapper/BlockWrapper";
+import BlockMenu from "../blocks/blockMenu/BlockMenu";
 import { getBlocks } from "../../store/reducers/blocksReducer/actions";
 
 const BlockList = () => {
@@ -29,9 +29,9 @@ const BlockList = () => {
     <>
       {blocks ? (
         blocks.map((block) => (
-          <BlockWrapper key={block.id} id={block.id}>
+          <BlockMenu key={block.id} id={block.id}>
             {renderBlock(block)}
-          </BlockWrapper>
+          </BlockMenu>
         ))
       ) : (
         <></>

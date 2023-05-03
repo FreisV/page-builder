@@ -9,7 +9,7 @@ import { deleteBlock } from "../../../store/reducers/blocksReducer/actions";
 import { useParams } from "react-router-dom";
 import CreateBlockModal from "../modals/createBlockModal/CreateBlockModal";
 
-const BlockWrapper = ({ id, children }) => {
+const BlockMenu = ({ id, children }) => {
   const [changeActive, setChangeActive] = useState(false);
   const [createActive, setCreateActive] = useState(false);
 
@@ -52,4 +52,4 @@ const BlockWrapper = ({ id, children }) => {
   );
 };
 
-export default BlockWrapper;
+export default BlockMenu;
