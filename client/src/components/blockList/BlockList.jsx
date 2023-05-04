@@ -5,7 +5,10 @@ import renderBlock from "../blocks/helpers/renderBlock";
 import CreateBlockModal from "../blocks/modals/createBlockModal/CreateBlockModal";
 import Button from "../button/Button";
 import BlockMenu from "../blocks/blockMenu/BlockMenu";
-import { getBlocks } from "../../store/reducers/blocksReducer/actions";
+import {
+  getBlocks,
+  getStyles,
+} from "../../store/reducers/blocksReducer/actions";
 
 const BlockList = () => {
   const [createActive, setCreateActive] = useState(false);
@@ -18,6 +21,7 @@ const BlockList = () => {
     const getProjectBlocks = async () => {
       try {
         await dispatch(getBlocks(params.id));
+        await dispatch(getStyles(params.id));
       } catch (e) {
         console.error(e);
       }
