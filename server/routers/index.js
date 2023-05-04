@@ -56,7 +56,8 @@ router.delete(
 );
 
 //styles
-router.get("/projects/:id/styles", authMiddleware, checkProjectOwnerMiddleware, stylesController.get);
+router.get("/projects/:id/styles", authMiddleware, stylesController.get);
 router.put("/projects/:id/styles", authMiddleware, checkProjectOwnerMiddleware, stylesController.update);
+router.get("/projects/:id/styles/:blockId", authMiddleware, stylesController.getOne);
 
 module.exports = router;

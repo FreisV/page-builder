@@ -26,6 +26,14 @@ class StylesService {
 
     return stylesDto;
   }
+
+  async getOne(blockId) {
+    const styles = await StylesModel.findOne({ blockId });
+
+    const stylesDto = new StylesDto(styles);
+
+    return stylesDto;
+  }
 }
 
 module.exports = new StylesService();

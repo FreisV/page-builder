@@ -24,6 +24,18 @@ class StylesController {
       next(e);
     }
   }
+
+  async getOne(req, res, next) {
+    try {
+      const blockId = req.params.blockId;
+
+      const styles = await stylesService.getOne(blockId);
+
+      res.json(styles);
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = new StylesController();
