@@ -29,7 +29,7 @@ const BlockMenu = ({ id, children }) => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.menu}>
       <div className={styles.buttons}>
         <Button onClick={() => setChangeActive(true)}>
           <FontAwesomeIcon icon={faPen} />
