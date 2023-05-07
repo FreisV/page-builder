@@ -3,7 +3,7 @@ import Textarea from "../../../textarea/Textarea";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { updateBlock } from "../../../../store/reducers/blocksReducer/actions";
-import ChangeBlockModal from "../changeBlockModal/ChangeBlockModal";
+import ChangeModal from "../changeBlockModal/ChangeModal";
 
 const ChangeParagraphBlockModal = ({ active, setActive, id }) => {
   const params = useParams();
@@ -29,13 +29,13 @@ const ChangeParagraphBlockModal = ({ active, setActive, id }) => {
   };
 
   return (
-    <ChangeBlockModal
+    <ChangeModal
       active={active}
       setActive={setActive}
       handleUpdate={handleUpdate}
     >
       <Textarea placeholder="Текст" forwardedRef={textRef} />
-    </ChangeBlockModal>
+    </ChangeModal>
   );
 };
 

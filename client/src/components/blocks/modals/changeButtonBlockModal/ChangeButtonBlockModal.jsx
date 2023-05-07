@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { updateBlock } from "../../../../store/reducers/blocksReducer/actions";
 import Input from "../../../input/Input";
-import ChangeBlockModal from "../changeBlockModal/ChangeBlockModal";
+import ChangeModal from "../changeBlockModal/ChangeModal";
 import Checkbox from "../../../checkbox/Checkbox";
 
 const ChangeButtonBlockModal = ({ active, setActive, id }) => {
@@ -38,7 +38,7 @@ const ChangeButtonBlockModal = ({ active, setActive, id }) => {
   };
 
   return (
-    <ChangeBlockModal
+    <ChangeModal
       active={active}
       setActive={setActive}
       handleUpdate={handleUpdate}
@@ -49,7 +49,7 @@ const ChangeButtonBlockModal = ({ active, setActive, id }) => {
         forwardedRef={downloadRef}
         desc={"Скачивать файл при нажатии?"}
       />
-    </ChangeBlockModal>
+    </ChangeModal>
   );
 };
 
