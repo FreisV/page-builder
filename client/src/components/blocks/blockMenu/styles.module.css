@@ -1,13 +1,7 @@
 .menu {
   position: relative;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0);
   transition: 0.3s;
-}
-
-.menu:hover {
-  border-top: 1px dashed lightgray;
-  border-bottom: 1px dashed lightgray;
 }
 
 .buttons {
