@@ -6,17 +6,17 @@ const ButtonStylesSchema = new mongoose.Schema(
     color: {
       type: String,
       required: true,
-      default: "white",
+      default: "#FFFFFF",
     },
     buttonBackgroundColor: {
       type: String,
       required: true,
-      default: "black",
+      default: "#000000",
     },
     buttonBorderColor: {
       type: String,
       required: true,
-      default: "black",
+      default: "#000000",
     },
     buttonBorderWidth: {
       type: String,

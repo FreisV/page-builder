@@ -14,7 +14,7 @@ const StylesSchema = mongoose.Schema(
       required: true,
       immutable: true,
     },
-    backgroundColor: { type: String, required: true, default: "white" },
+    backgroundColor: { type: String, required: true, default: "#FFFFFF" },
     paddingTop: { type: String, required: true, default: "15px" },
     paddingBottom: { type: String, required: true, default: "15px" },
     type: { type: String, required: true, immutable: true },

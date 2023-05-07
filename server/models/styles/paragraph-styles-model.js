@@ -6,7 +6,7 @@ const ParagraphStylesSchema = new mongoose.Schema(
     color: {
       type: String,
       required: true,
-      default: "white",
+      default: "#000000",
     },
     textAlign: {
       type: String,
