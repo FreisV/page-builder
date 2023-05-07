@@ -1,7 +1,7 @@
 import ChangeButtonBlockModal from "../modals/changeButtonBlockModal/ChangeButtonBlockModal";
 import ChangeParagraphBlockModal from "../modals/changeParagraphBlockModal/ChangeParagraphBlockModal";
 
-export default function renderChange(active, setActive, block) {
+export default function renderChangeBlockModal(active, setActive, block) {
   switch (block.type) {
     case "ButtonBlock":
       return (
