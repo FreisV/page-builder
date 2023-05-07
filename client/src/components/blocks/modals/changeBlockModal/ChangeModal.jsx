@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "../../../modal/Modal";
 import styles from "./styles.module.css";
 
-const ChangeBlockModal = ({ active, setActive, handleUpdate, children }) => {
+const ChangeModal = ({ active, setActive, handleUpdate, children }) => {
   return (
     <Modal active={active} setActive={setActive}>
       <div className={styles.buttons}>
@@ -22,4 +22,4 @@ const ChangeBlockModal = ({ active, setActive, handleUpdate, children }) => {
   );
 };
 
-export default ChangeBlockModal;
+export default ChangeModal;
