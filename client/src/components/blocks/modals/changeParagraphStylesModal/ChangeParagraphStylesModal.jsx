@@ -25,8 +25,6 @@ const ChangeParagraphStylesModal = ({ active, setActive, blockId }) => {
     colorRef.current.value = blockStyles?.color;
     textAlignRef.current.value = blockStyles?.textAlign;
 
-    console.log(textAlignRef.current);
-
     paddingTopRef.current.value = blockStyles?.paddingTop;
     paddingBottomRef.current.value = blockStyles?.paddingBottom;
     backgroundColorRef.current.value = blockStyles?.backgroundColor;
