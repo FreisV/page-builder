@@ -4,8 +4,7 @@ const BlockModel = require("./block-model");
 const ButtonBlockSchema = new mongoose.Schema(
   {
     text: { type: String, required: true, default: "Нажми" },
-    link: { type: String, required: true, default: "#" },
-    download: { type: Boolean, required: true, default: false },
+    link: { type: String, required: true, default: "https://" },
   },
   { discriminatorKey: "type" }
 );
