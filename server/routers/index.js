@@ -7,6 +7,7 @@ const checkProjectOwnerMiddleware = require("../middlewares/check-project-owner-
 const projectController = require("../controllers/project-controller");
 const blockController = require("../controllers/block-controller");
 const stylesController = require("../controllers/styles-controller");
+const downloadController = require("../controllers/download-controller");
 
 //authorization
 router.post(
@@ -59,5 +60,8 @@ router.delete(
 router.get("/projects/:id/styles", authMiddleware, stylesController.get);
 router.put("/projects/:id/styles", authMiddleware, checkProjectOwnerMiddleware, stylesController.update);
 router.get("/projects/:id/styles/:blockId", authMiddleware, stylesController.getOne);
+
+//download
+router.get("/projects/:id/download", authMiddleware, downloadController.download)
 
 module.exports = router;
