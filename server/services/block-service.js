@@ -6,6 +6,8 @@ const BlockDto = require("../dtos/block-dto");
 const ButtonStylesModel = require("../models/styles/button-styles-model");
 const ParagraphStylesModel = require("../models/styles/paragraph-styles-model");
 const StylesModel = require("../models/styles/styles-model");
+const TwoParagraphsBlockModel = require("../models/blocks/two-paragraphs-model");
+const TwoParagraphsStylesModel = require("../models/styles/two-paragraphs-styles-model");
 
 class BlockService {
   async create(data) {
@@ -26,11 +28,18 @@ class BlockService {
           projectId: block.projectId,
         });
         break;
+      case "TwoParagraphsBlock":
+        block = await TwoParagraphsBlockModel.create(data);
+        await TwoParagraphsStylesModel.create({
+          blockId: block._id,
+          projectId: block.projectId,
+        });
+        break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
     }
 
-    await await BlockModel.updateMany(
+    await BlockModel.updateMany(
       {
         projectId: data.projectId,
         _id: { $ne: block.id },
