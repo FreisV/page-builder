@@ -36,10 +36,29 @@ class CssService {
         width:100%;
       }
 
+      .two-paragraphs-wrapper {
+        width: 49%;
+      }
+
+      .two-paragraphs-wrapper:first-child {
+        margin-right: 2%;
+      }
+
       .paragraph {
         font-size: 18px;
+        padding-top: 8px;
+        padding-bottom: 5px;
       }
+
+      @media (max-width: 768px) {
+        .two-paragraphs-wrapper {
+          width: 100%;
+        }
       
+        .two-paragraphs-wrapper:first-child {
+          margin-right: 0;
+        }
+      }
       `
     );
   }
@@ -53,6 +72,10 @@ class CssService {
       case "ParagraphStyles":
         this.writeBlockStylesToCss(cssFile, styles);
         this.writeParagraphStylesToCss(cssFile, styles);
+        break;
+      case "TwoParagraphsStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeTwoParagraphsStylesToCss(cssFile, styles);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -93,6 +116,23 @@ class CssService {
       `.block-${styles.blockId}__paragraph {
         color: ${styles.color};
         text-align: ${styles.textAlign};
+      }
+
+      `
+    );
+  }
+
+  writeTwoParagraphsStylesToCss(cssFile, styles) {
+    fs.appendFileSync(
+      cssFile,
+      `.block-${styles.blockId}__paragraph1 {
+        color: ${styles.color};
+        text-align: ${styles.textAlign};
+      }
+
+      .block-${styles.blockId}__paragraph2 {
+        color: ${styles.color2};
+        text-align: ${styles.textAlign2};
       }
 
       `
