@@ -18,6 +18,8 @@ const ParagraphBlock = ({ id, ...otherProps }) => {
             textAlign: blockStyles?.textAlign,
 
             fontSize: "18px",
+            paddingTop: "8px",
+            paddingBottom: "5px"
           }}
         >
           {block.text}
