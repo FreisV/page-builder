@@ -9,6 +9,9 @@ module.exports = class BlockDto {
       this.download = block.download;
     } else if (block.type === "ParagraphBlock") {
       this.text = block.text;
+    } else if (block.type === "TwoParagraphsBlock") {
+      this.text = block.text;
+      this.text2 = block.text2;
     }
   }
-}
+};

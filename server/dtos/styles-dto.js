@@ -17,5 +17,11 @@ module.exports = class StylesDto {
       this.color = styles.color;
       this.textAlign = styles.textAlign;
     }
+    if (styles.type === "TwoParagraphsStyles") {
+      this.color = styles.color;
+      this.textAlign = styles.textAlign;
+      this.color2 = styles.color2;
+      this.textAlign2 = styles.textAlign2;
+    }
   }
 };
