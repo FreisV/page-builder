@@ -47,6 +47,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
       >
         Параграф
       </button>
+      <button
+        className={styles.button}
+        onClick={() => createNewBlock("TwoParagraphsBlock", newBlockNumber)}
+      >
+        Два параграфа
+      </button>
       <div className={styles.close}></div>
     </Modal>
   );
