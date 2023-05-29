@@ -41,6 +41,9 @@ class HtmlService {
       case "ParagraphBlock":
         this.writeParagraphBlockToHtml(htmlFile, block);
         break;
+      case "TwoParagraphsBlock":
+        this.writeTwoParagraphsBlockToHtml(htmlFile, block);
+        break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
     }
@@ -75,6 +78,27 @@ class HtmlService {
         </div>
       </div>
     </div>`
+    );
+  }
+
+  writeTwoParagraphsBlockToHtml(htmlFile, block) {
+    fs.appendFileSync(
+      htmlFile,
+      `
+      <div class="block block-${block.id}">
+        <div class="wrapper">
+          <div class="two-paragraphs-wrapper">
+            <p class="paragraph block-${block.id}__paragraph1">
+              ${encode(block.text)}
+            </p>
+          </div>
+          <div class="two-paragraphs-wrapper">
+            <p class="paragraph block-${block.id}__paragraph2">
+              ${encode(block.text2)}
+            </p>
+          </div>
+        </div>
+      </div>`
     );
   }
 }
