@@ -8,6 +8,7 @@ const projectController = require("../controllers/project-controller");
 const blockController = require("../controllers/block-controller");
 const stylesController = require("../controllers/styles-controller");
 const downloadController = require("../controllers/download-controller");
+const upload = require("../middlewares/upload-middleware")
 
 //authorization
 router.post(
@@ -50,6 +51,7 @@ router.put(
   "/projects/:id/blocks",
   authMiddleware,
   checkProjectOwnerMiddleware,
+  upload.array("photos", 3),
   blockController.update
 );
 router.get("/projects/:id/blocks", authMiddleware, blockController.getBlocks);
@@ -71,6 +73,7 @@ router.put(
   "/projects/:id/styles",
   authMiddleware,
   checkProjectOwnerMiddleware,
+  upload.single("photo"),
   stylesController.update
 );
 router.get(
