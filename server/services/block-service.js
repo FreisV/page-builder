@@ -8,6 +8,8 @@ const ParagraphStylesModel = require("../models/styles/paragraph-styles-model");
 const StylesModel = require("../models/styles/styles-model");
 const TwoParagraphsBlockModel = require("../models/blocks/two-paragraphs-model");
 const TwoParagraphsStylesModel = require("../models/styles/two-paragraphs-styles-model");
+const ImageBlockModel = require("../models/blocks/image-block-model");
+const ImageStylesModel = require("../models/styles/image-styles-model");
 
 class BlockService {
   async create(data) {
@@ -31,6 +33,13 @@ class BlockService {
       case "TwoParagraphsBlock":
         block = await TwoParagraphsBlockModel.create(data);
         await TwoParagraphsStylesModel.create({
+          blockId: block._id,
+          projectId: block.projectId,
+        });
+        break;
+      case "ImageBlock":
+        block = await ImageBlockModel.create(data);
+        await ImageStylesModel.create({
           blockId: block._id,
           projectId: block.projectId,
         });
