@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import BlockWrapper from "../blockWrapper/BlockWrapper";
-import styles from "./styles.module.css";
 
 const TwoParagraphsBlock = ({ id, ...otherProps }) => {
   const { blocks, blocksStyles } = useSelector((state) => state.blocks);
@@ -10,9 +9,9 @@ const TwoParagraphsBlock = ({ id, ...otherProps }) => {
 
   return (
     <BlockWrapper blockStyles={blockStyles}>
-      <div className={styles.twoParagraphsWrapper}>
+      <div className="twoColumnsWrapper">
         <p
-          className={styles.paragraph}
+          className="paragraph"
           style={{
             color: blockStyles?.color,
             textAlign: blockStyles?.textAlign,
@@ -21,9 +20,9 @@ const TwoParagraphsBlock = ({ id, ...otherProps }) => {
           {block.text}
         </p>
       </div>
-      <div className={styles.twoParagraphsWrapper}>
+      <div className="twoColumnsWrapper">
         <p
-          className={styles.paragraph}
+          className="paragraph"
           style={{
             color: blockStyles?.color2,
             textAlign: blockStyles?.textAlign2,

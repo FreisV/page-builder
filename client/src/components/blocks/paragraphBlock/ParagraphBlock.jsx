@@ -9,17 +9,12 @@ const ParagraphBlock = ({ id, ...otherProps }) => {
 
   return (
     <BlockWrapper blockStyles={blockStyles}>
-      <div
-        style={{width:"100%"}}
-      >
+      <div style={{ width: "100%" }}>
         <p
+          className="paragraph"
           style={{
             color: blockStyles?.color,
             textAlign: blockStyles?.textAlign,
-
-            fontSize: "18px",
-            paddingTop: "8px",
-            paddingBottom: "5px"
           }}
         >
           {block.text}
