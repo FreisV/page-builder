@@ -53,6 +53,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
       >
         Два параграфа
       </button>
+      <button
+        className={styles.button}
+        onClick={() => createNewBlock("ImageBlock", newBlockNumber)}
+      >
+        Изображение
+      </button>
       <div className={styles.close}></div>
     </Modal>
   );
