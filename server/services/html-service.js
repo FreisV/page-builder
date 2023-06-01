@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { encode } = require("html-entities");
+const ApiError = require("../exceptions/api-error");
 
 class HtmlService {
   createHtmlStart(htmlFile, title) {
@@ -43,6 +44,9 @@ class HtmlService {
         break;
       case "TwoParagraphsBlock":
         this.writeTwoParagraphsBlockToHtml(htmlFile, block);
+        break;
+      case "ImageBlock":
+        this.writeImageBlockToHtml(htmlFile, block);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -97,6 +101,22 @@ class HtmlService {
               ${encode(block.text2)}
             </p>
           </div>
+        </div>
+      </div>`
+    );
+  }
+
+  writeImageBlockToHtml(htmlFile, block) {
+    fs.appendFileSync(
+      htmlFile,
+      `
+      <div class="block block-${block.id}">
+        <div class="wrapper">
+          <img
+            class="image block-${block.id}__image"
+            src="images\\${block.filename}"
+            alt=""
+          />
         </div>
       </div>`
     );
