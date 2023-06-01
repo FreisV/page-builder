@@ -48,6 +48,9 @@ class HtmlService {
       case "ImageBlock":
         this.writeImageBlockToHtml(htmlFile, block);
         break;
+      case "ParagraphImageBlock":
+        this.writeParagraphImageBlockToHtml(htmlFile, block);
+        break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
     }
@@ -91,12 +94,12 @@ class HtmlService {
       `
       <div class="block block-${block.id}">
         <div class="wrapper">
-          <div class="two-paragraphs-wrapper">
+          <div class="two-columns-wrapper">
             <p class="paragraph block-${block.id}__paragraph1">
               ${encode(block.text)}
             </p>
           </div>
-          <div class="two-paragraphs-wrapper">
+          <div class="two-columns-wrapper">
             <p class="paragraph block-${block.id}__paragraph2">
               ${encode(block.text2)}
             </p>
@@ -117,6 +120,29 @@ class HtmlService {
             src="images\\${block.filename}"
             alt=""
           />
+        </div>
+      </div>`
+    );
+  }
+
+  writeParagraphImageBlockToHtml(htmlFile, block) {
+    fs.appendFileSync(
+      htmlFile,
+      `
+      <div class="block block-${block.id}">
+        <div class="wrapper">
+          <div class="two-columns-wrapper">
+            <p class="paragraph block-${block.id}__paragraph">
+              ${encode(block.text)}
+            </p>
+          </div>
+          <div class="two-columns-wrapper image-wrapper">
+            <img
+              class="image block-${block.id}__image"
+              src="images\\${block.filename}"
+              alt=""
+            />
+          </div>
         </div>
       </div>`
     );
