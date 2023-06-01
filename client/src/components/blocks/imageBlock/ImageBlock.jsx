@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import BlockWrapper from "../blockWrapper/BlockWrapper";
 import { API_URL } from "../../../http";
 
-
 const ImageBlock = ({ id, ...otherProps }) => {
   const { blocks, blocksStyles } = useSelector((state) => state.blocks);
   const block = blocks.find((block) => block.id === id);
@@ -12,10 +11,10 @@ const ImageBlock = ({ id, ...otherProps }) => {
   return (
     <BlockWrapper blockStyles={blockStyles}>
       <img
+        className="image"
         src={`${API_URL}/images/${block.filename}`}
         alt=""
         style={{
-          maxWidth: "100%",
           maxHeight: blockStyles?.maxHeight,
         }}
       />
