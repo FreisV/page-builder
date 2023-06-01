@@ -2,7 +2,7 @@ import ChangeButtonBlockModal from "../modals/changeButtonBlockModal/ChangeButto
 import ChangeImageBlockModal from "../modals/changeImageBlockModal/ChangeImageBlockModal";
 import ChangeParagraphBlockModal from "../modals/changeParagraphBlockModal/ChangeParagraphBlockModal";
 import ChangeTwoParagraphsBlockModal from "../modals/changeTwoParagraphsBlockModal/ChangeTwoParagraphsBlockModal";
-
+import ChangeParagraphImageBlockModal from "../modals/changeParagraphImageBlockModal/ChangeParagraphImageBlockModal";
 export default function renderChangeBlockModal(active, setActive, block) {
   switch (block.type) {
     case "ButtonBlock":
@@ -21,7 +21,7 @@ export default function renderChangeBlockModal(active, setActive, block) {
           id={block.id}
         />
       );
-      case "TwoParagraphsBlock":
+    case "TwoParagraphsBlock":
       return (
         <ChangeTwoParagraphsBlockModal
           active={active}
@@ -29,14 +29,22 @@ export default function renderChangeBlockModal(active, setActive, block) {
           id={block.id}
         />
       );
-      case "ImageBlock":
-        return (
-          <ChangeImageBlockModal
-            active={active}
-            setActive={setActive}
-            id={block.id}
-          />
-        );
+    case "ImageBlock":
+      return (
+        <ChangeImageBlockModal
+          active={active}
+          setActive={setActive}
+          id={block.id}
+        />
+      );
+    case "ParagraphImageBlock":
+      return (
+        <ChangeParagraphImageBlockModal
+          active={active}
+          setActive={setActive}
+          id={block.id}
+        />
+      );
     default:
       return null;
   }
