@@ -59,6 +59,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
       >
         Изображение
       </button>
+      <button
+        className={styles.button}
+        onClick={() => createNewBlock("ParagraphImageBlock", newBlockNumber)}
+      >
+        Параграф-Изображение
+      </button>
       <div className={styles.close}></div>
     </Modal>
   );
