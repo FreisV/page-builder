@@ -22,6 +22,10 @@ module.exports = class StylesDto {
       this.textAlign2 = styles.textAlign2;
     } else if (styles.type === "ImageStyles") {
       this.maxHeight = styles.maxHeight;
+    } else if (styles.type === "ParagraphImageStyles") {
+      this.color = styles.color;
+      this.textAlign = styles.textAlign;
+      this.maxHeight = styles.maxHeight;
     }
   }
 };
