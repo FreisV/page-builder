@@ -8,7 +8,28 @@ const projectController = require("../controllers/project-controller");
 const blockController = require("../controllers/block-controller");
 const stylesController = require("../controllers/styles-controller");
 const downloadController = require("../controllers/download-controller");
-const upload = require("../middlewares/upload-middleware")
+const imageController = require("../controllers/image-controller");
+const multer = require("multer");
+const fs = require("fs");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const destinationPath = `${process.env.IMAGES_FOLDER}`;
+
+    fs.mkdir(destinationPath, { recursive: true }, (err) => {
+      if (err) {
+        console.error(err);
+      }
+
+      cb(null, destinationPath);
+    });
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 //authorization
 router.post(
@@ -51,7 +72,7 @@ router.put(
   "/projects/:id/blocks",
   authMiddleware,
   checkProjectOwnerMiddleware,
-  upload.array("photos", 3),
+  upload.array("images", 3),
   blockController.update
 );
 router.get("/projects/:id/blocks", authMiddleware, blockController.getBlocks);
@@ -73,7 +94,7 @@ router.put(
   "/projects/:id/styles",
   authMiddleware,
   checkProjectOwnerMiddleware,
-  upload.single("photo"),
+  upload.single("image"),
   stylesController.update
 );
 router.get(
@@ -88,5 +109,8 @@ router.get(
   authMiddleware,
   downloadController.download
 );
+
+//image
+router.get("/images/:filename", imageController.getImage);
 
 module.exports = router;
