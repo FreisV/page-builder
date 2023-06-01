@@ -33,8 +33,6 @@ const ChangeImageStylesModal = ({ active, setActive, blockId }) => {
       const enteredMaxHeight = parseFloat(maxHeightRef.current.value);
       const maxHeight = isNaN(enteredMaxHeight) ? "" : enteredMaxHeight + "px";
 
-      console.log(maxHeight);
-
       const paddingTop = (parseFloat(paddingTopRef.current.value) || 0) + "px";
       const paddingBottom =
         (parseFloat(paddingBottomRef.current.value) || 0) + "px";
