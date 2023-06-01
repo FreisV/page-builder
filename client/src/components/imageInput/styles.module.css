@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  cursor: pointer;
+}
+
+.label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+
+  /* display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 5px 0;
+  border: none;
+  font-size: 1.2em; */
+}
