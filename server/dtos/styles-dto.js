@@ -12,16 +12,16 @@ module.exports = class StylesDto {
       this.buttonBackgroundColor = styles.buttonBackgroundColor;
       this.buttonBorderColor = styles.buttonBorderColor;
       this.buttonBorderWidth = styles.buttonBorderWidth;
-    }
-    if (styles.type === "ParagraphStyles") {
+    } else if (styles.type === "ParagraphStyles") {
       this.color = styles.color;
       this.textAlign = styles.textAlign;
-    }
-    if (styles.type === "TwoParagraphsStyles") {
+    } else if (styles.type === "TwoParagraphsStyles") {
       this.color = styles.color;
       this.textAlign = styles.textAlign;
       this.color2 = styles.color2;
       this.textAlign2 = styles.textAlign2;
+    } else if (styles.type === "ImageStyles") {
+      this.maxHeight = styles.maxHeight;
     }
   }
 };

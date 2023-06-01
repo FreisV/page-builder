@@ -12,6 +12,8 @@ module.exports = class BlockDto {
     } else if (block.type === "TwoParagraphsBlock") {
       this.text = block.text;
       this.text2 = block.text2;
+    } else if (block.type === "ImageBlock") {
+      this.filename = block.filename;
     }
   }
 };
