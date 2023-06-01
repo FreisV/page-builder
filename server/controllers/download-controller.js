@@ -14,6 +14,7 @@ class DownloadController {
         if (err) {
           console.error(`Ошибка загрузки файла: ${err}`);
         } else {
+          downloadService.deleteDownloadedFile(filePath);
           console.log("Файл успешно загружен");
         }
       });
