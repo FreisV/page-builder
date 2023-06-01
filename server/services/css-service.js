@@ -1,4 +1,5 @@
 const fs = require("fs");
+const ApiError = require("../exceptions/api-error");
 
 class CssService {
   createCssStart(cssFile) {
@@ -50,6 +51,10 @@ class CssService {
         padding-bottom: 5px;
       }
 
+      .image{
+        max-width: 100%;
+      }
+
       @media (max-width: 768px) {
         .two-paragraphs-wrapper {
           width: 100%;
@@ -76,6 +81,14 @@ class CssService {
       case "TwoParagraphsStyles":
         this.writeBlockStylesToCss(cssFile, styles);
         this.writeTwoParagraphsStylesToCss(cssFile, styles);
+        break;
+      case "TwoParagraphsStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeTwoParagraphsStylesToCss(cssFile, styles);
+        break;
+      case "ImageStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeImageStylesToCss(cssFile, styles);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -133,6 +146,17 @@ class CssService {
       .block-${styles.blockId}__paragraph2 {
         color: ${styles.color2};
         text-align: ${styles.textAlign2};
+      }
+
+      `
+    );
+  }
+
+  writeImageStylesToCss(cssFile, styles) {
+    fs.appendFileSync(
+      cssFile,
+      `.block-${styles.blockId}__image{
+        max-height: ${styles.maxHeight}
       }
 
       `
