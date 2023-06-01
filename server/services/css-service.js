@@ -21,7 +21,7 @@ class CssService {
         width: 90%;
         max-width: 960px;
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
         flex-wrap: wrap;
       }
@@ -37,11 +37,11 @@ class CssService {
         width:100%;
       }
 
-      .two-paragraphs-wrapper {
+      .two-columns-wrapper {
         width: 49%;
       }
 
-      .two-paragraphs-wrapper:first-child {
+      .two-columns-wrapper:first-child {
         margin-right: 2%;
       }
 
@@ -49,6 +49,11 @@ class CssService {
         font-size: 18px;
         padding-top: 8px;
         padding-bottom: 5px;
+        white-space: pre-line;
+      }
+
+      .image-wrapper {
+        display: flex;
       }
 
       .image{
@@ -56,11 +61,11 @@ class CssService {
       }
 
       @media (max-width: 768px) {
-        .two-paragraphs-wrapper {
+        .two-columns-wrapper {
           width: 100%;
         }
       
-        .two-paragraphs-wrapper:first-child {
+        .two-columns-wrapper:first-child {
           margin-right: 0;
         }
       }
@@ -89,6 +94,10 @@ class CssService {
       case "ImageStyles":
         this.writeBlockStylesToCss(cssFile, styles);
         this.writeImageStylesToCss(cssFile, styles);
+        break;
+      case "ParagraphImageStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeParagraphImageStylesToCss(cssFile, styles);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -156,6 +165,23 @@ class CssService {
     fs.appendFileSync(
       cssFile,
       `.block-${styles.blockId}__image{
+        max-height: ${styles.maxHeight}
+      }
+
+      `
+    );
+  }
+
+  writeParagraphImageStylesToCss(cssFile, styles) {
+    fs.appendFileSync(
+      cssFile,
+      `
+      .block-${styles.blockId}__paragraph {
+        color: ${styles.color};
+        text-align: ${styles.textAlign};
+      }
+
+      .block-${styles.blockId}__image{
         max-height: ${styles.maxHeight}
       }
 
