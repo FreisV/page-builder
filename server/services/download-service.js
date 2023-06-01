@@ -2,6 +2,7 @@ const ProjectModel = require("../models/project-model");
 const BlockModel = require("../models/blocks/block-model");
 const StylesModel = require("../models/styles/styles-model");
 const fs = require("fs");
+const fsp = require("fs/promises");
 const htmlService = require("../services/html-service");
 const cssService = require("../services/css-service");
 const archiver = require("archiver");
@@ -19,11 +20,39 @@ class DownloadService {
     const directoryPath = `${process.env.FILE_FOLDER}${projectId}\\${userId}\\`;
     fs.mkdirSync(directoryPath, { recursive: true });
 
+    const imagesFolderPath = `${directoryPath}images\\`;
+    fs.mkdirSync(imagesFolderPath, { recursive: true });
+
     const htmlFile = `${directoryPath}index.html`;
     const cssFile = `${directoryPath}style.css`;
 
     fs.writeFileSync(htmlFile, "");
     fs.writeFileSync(cssFile, "");
+
+    const allImagesFolderPath = process.env.IMAGES_FOLDER;
+
+    for (const block of blocks) {
+      if (block.filename) {
+        const sourceFilePath = `${allImagesFolderPath}${block.filename}`;
+        const destinationFilePath = `${imagesFolderPath}${block.filename}`;
+
+        fs.copyFileSync(sourceFilePath, destinationFilePath);
+      }
+
+      if (block.filename2) {
+        const sourceFilePath = `${allImagesFolderPath}${block.filename2}`;
+        const destinationFilePath = `${imagesFolderPath}${block.filename2}`;
+
+        fs.copyFileSync(sourceFilePath, destinationFilePath);
+      }
+
+      if (block.filename3) {
+        const sourceFilePath = `${allImagesFolderPath}${block.filename3}`;
+        const destinationFilePath = `${imagesFolderPath}${block.filename3}`;
+
+        fs.copyFileSync(sourceFilePath, destinationFilePath);
+      }
+    }
 
     htmlService.createHtmlStart(htmlFile, project.name);
 
@@ -41,38 +70,44 @@ class DownloadService {
 
     const zipFile = await this.createZip(directoryPath, project.name);
 
+    for (const file of await fsp.readdir(imagesFolderPath)) {
+      await fsp.unlink(path.join(imagesFolderPath, file));
+    }
+
+    fs.rmdirSync(imagesFolderPath);
+
+    for (const file of await fsp.readdir(directoryPath)) {
+      await fsp.unlink(path.join(directoryPath, file));
+    }
+
     return zipFile;
   }
 
   async createZip(directoryPath, filename) {
-    const zipFile = `${directoryPath}${filename}.zip`;
+    const zipFile = `${directoryPath}..\\${filename}.zip`;
     const output = fs.createWriteStream(zipFile);
     const archive = archiver("zip", { zlib: { level: 9 } });
-  
+
     archive.pipe(output);
-  
-    fs.readdirSync(directoryPath).forEach((file) => {
-      const filePath = path.join(directoryPath, file);
-      const stat = fs.statSync(filePath);
-  
-      if (stat.isFile() && file !== path.basename(zipFile)) {
-        archive.file(filePath, { name: file });
-      }
-    });
-  
+    archive.directory(directoryPath, false);
+
     await new Promise((resolve, reject) => {
-      output.on('close', () => {
+      output.on("close", () => {
         resolve();
       });
-  
-      archive.on('error', (err) => {
+
+      archive.on("error", (err) => {
         reject(err);
       });
-  
+
       archive.finalize();
     });
-  
+
     return zipFile;
+  }
+
+  async deleteDownloadedFile(filePath) {
+    await fsp.unlink(filePath);
   }
 }
 
