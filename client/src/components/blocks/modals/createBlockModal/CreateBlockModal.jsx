@@ -72,6 +72,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
         >
           Обложка
         </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("TitleBlock", newBlockNumber)}
+        >
+          Заголовок
+        </button>
       </div>
       <div className={styles.close}></div>
     </Modal>
