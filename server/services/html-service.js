@@ -51,6 +51,9 @@ class HtmlService {
       case "ParagraphImageBlock":
         this.writeParagraphImageBlockToHtml(htmlFile, block);
         break;
+      case "CoverBlock":
+        this.writeCoverBlockToHtml(htmlFile, block);
+        break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
     }
@@ -144,6 +147,28 @@ class HtmlService {
             />
           </div>
         </div>
+      </div>`
+    );
+  }
+
+  writeCoverBlockToHtml(htmlFile, block) {
+    fs.appendFileSync(
+      htmlFile,
+      `
+      <div class="block block-${block.id}">
+        <div class="wrapper">
+          <div>
+            <h1 class="title block-${block.id}__title">
+              ${encode(block.title)}
+            </h1>
+            <h3 class="subtitle block-${block.id}__subtitle">
+              ${encode(block.subtitle)}
+            </h3>
+            <p class="paragraph block-${block.id}__paragraph">
+              ${encode(block.description)}
+            </p>
+        </div>
+       </div>
       </div>`
     );
   }
