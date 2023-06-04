@@ -60,6 +60,18 @@ class CssService {
         max-width: 100%;
       }
 
+      .title {
+        font-size: 55px;
+        margin: 20px 0;
+        font-weight: 600;
+      }
+      
+      .subtitle {
+        font-size: 24px;
+        margin: 20px 0 30px 0;
+        font-weight: 500;
+      }
+
       @media (max-width: 768px) {
         .two-columns-wrapper {
           width: 100%;
@@ -67,6 +79,18 @@ class CssService {
       
         .two-columns-wrapper:first-child {
           margin-right: 0;
+        }
+
+        .paragraph {
+          font-size: 14px;
+        }
+      
+        .title {
+          font-size: 35px;
+        }
+        
+        .subtitle {
+          font-size: 18px;
         }
       }
       `
@@ -99,22 +123,42 @@ class CssService {
         this.writeBlockStylesToCss(cssFile, styles);
         this.writeParagraphImageStylesToCss(cssFile, styles);
         break;
+      case "CoverStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeCoverStylesToCss(cssFile, styles);
+        break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
     }
   }
 
   writeBlockStylesToCss(cssFile, styles) {
-    fs.appendFileSync(
-      cssFile,
-      `.block-${styles.blockId} {
-        background-color: ${styles.backgroundColor};
-        padding-top: ${styles.paddingTop};
-        padding-bottom: ${styles.paddingBottom};
-      }
+    const {
+      blockId,
+      backgroundImage,
+      backgroundColor,
+      paddingTop,
+      paddingBottom,
+      minHeight,
+    } = styles;
+    const backgroundStyles = backgroundImage
+      ? `
+    background-image: url(./images/${backgroundImage});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: ${minHeight};
+  `
+      : "";
 
-      `
-    );
+    const cssContent = `.block-${blockId} {
+    ${backgroundStyles}
+    background-color: ${backgroundColor};
+    padding-top: ${paddingTop};
+    padding-bottom: ${paddingBottom};
+  }\n\n`;
+
+    fs.appendFileSync(cssFile, cssContent);
   }
 
   writeButtonStylesToCss(cssFile, styles) {
@@ -183,6 +227,29 @@ class CssService {
 
       .block-${styles.blockId}__image{
         max-height: ${styles.maxHeight}
+      }
+
+      `
+    );
+  }
+
+  writeCoverStylesToCss(cssFile, styles) {
+    fs.appendFileSync(
+      cssFile,
+      `
+      .block-${styles.blockId}__title {
+        color: ${styles.titleColor};
+        text-align: ${styles.titleAlign};
+      }
+
+      .block-${styles.blockId}__subtitle {
+        color: ${styles.subtitleColor};
+        text-align: ${styles.subtitleAlign};
+      }
+
+      .block-${styles.blockId}__paragraph {
+        color: ${styles.descriptionColor};
+        text-align: ${styles.descriptionAlign};
       }
 
       `
