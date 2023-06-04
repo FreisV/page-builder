@@ -21,6 +21,10 @@ module.exports = class BlockDto {
       this.title = block.title;
       this.subtitle = block.subtitle;
       this.description = block.description;
+    } else if (block.type === "TitleBlock") {
+      this.title = block.title;
+      this.subtitle = block.subtitle;
+      this.description = block.description;
     }
   }
 };
