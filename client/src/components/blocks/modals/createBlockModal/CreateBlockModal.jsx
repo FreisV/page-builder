@@ -35,36 +35,44 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
         Закрыть
       </button>
       <h2 className={styles.title}>Создать новый блок</h2>
-      <button
-        className={styles.button}
-        onClick={() => createNewBlock("ButtonBlock", newBlockNumber)}
-      >
-        Кнопка
-      </button>
-      <button
-        className={styles.button}
-        onClick={() => createNewBlock("ParagraphBlock", newBlockNumber)}
-      >
-        Параграф
-      </button>
-      <button
-        className={styles.button}
-        onClick={() => createNewBlock("TwoParagraphsBlock", newBlockNumber)}
-      >
-        Два параграфа
-      </button>
-      <button
-        className={styles.button}
-        onClick={() => createNewBlock("ImageBlock", newBlockNumber)}
-      >
-        Изображение
-      </button>
-      <button
-        className={styles.button}
-        onClick={() => createNewBlock("ParagraphImageBlock", newBlockNumber)}
-      >
-        Параграф-Изображение
-      </button>
+      <div className={styles.fields}>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("ButtonBlock", newBlockNumber)}
+        >
+          Кнопка
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("ParagraphBlock", newBlockNumber)}
+        >
+          Параграф
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("TwoParagraphsBlock", newBlockNumber)}
+        >
+          Два параграфа
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("ImageBlock", newBlockNumber)}
+        >
+          Изображение
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("ParagraphImageBlock", newBlockNumber)}
+        >
+          Параграф-Изображение
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("CoverBlock", newBlockNumber)}
+        >
+          Обложка
+        </button>
+      </div>
       <div className={styles.close}></div>
     </Modal>
   );
