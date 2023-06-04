@@ -54,6 +54,9 @@ class HtmlService {
       case "CoverBlock":
         this.writeCoverBlockToHtml(htmlFile, block);
         break;
+      case "TitleBlock":
+        this.writeTitleBlockToHtml(htmlFile, block);
+        break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
     }
@@ -81,10 +84,10 @@ class HtmlService {
       `
     <div class="block block-${block.id}">
       <div class="wrapper">
-        <div class="paragraph-wrapper">
-          <p class="paragraph block-${block.id}__paragraph">
-            ${encode(block.text)}
-          </p>
+        <div class="one-column-wrapper">
+          <p class="paragraph block-${block.id}__paragraph">${encode(
+        block.text
+      )}</p>
         </div>
       </div>
     </div>`
@@ -98,14 +101,14 @@ class HtmlService {
       <div class="block block-${block.id}">
         <div class="wrapper">
           <div class="two-columns-wrapper">
-            <p class="paragraph block-${block.id}__paragraph1">
-              ${encode(block.text)}
-            </p>
+            <p class="paragraph block-${block.id}__paragraph1">${encode(
+        block.text
+      )}</p>
           </div>
           <div class="two-columns-wrapper">
-            <p class="paragraph block-${block.id}__paragraph2">
-              ${encode(block.text2)}
-            </p>
+            <p class="paragraph block-${block.id}__paragraph2">${encode(
+        block.text2
+      )}</p>
           </div>
         </div>
       </div>`
@@ -157,16 +160,38 @@ class HtmlService {
       `
       <div class="block block-${block.id}">
         <div class="wrapper">
-          <div>
+          <div class="one-column-wrapper">
+            <h1 class="cover_title block-${block.id}__cover_title">
+              ${encode(block.title)}
+            </h1>
+            <h3 class="cover_subtitle block-${block.id}__cover_subtitle">
+              ${encode(block.subtitle)}
+            </h3>
+            <p class="paragraph block-${block.id}__paragraph">${encode(
+        block.description
+      )}</p>
+        </div>
+       </div>
+      </div>`
+    );
+  }
+
+  writeTitleBlockToHtml(htmlFile, block) {
+    fs.appendFileSync(
+      htmlFile,
+      `
+      <div class="block block-${block.id}">
+        <div class="wrapper">
+          <div class="one-column-wrapper">
             <h1 class="title block-${block.id}__title">
               ${encode(block.title)}
             </h1>
             <h3 class="subtitle block-${block.id}__subtitle">
               ${encode(block.subtitle)}
             </h3>
-            <p class="paragraph block-${block.id}__paragraph">
-              ${encode(block.description)}
-            </p>
+            <p class="paragraph block-${block.id}__paragraph">${encode(
+        block.description
+      )}</p>
         </div>
        </div>
       </div>`
