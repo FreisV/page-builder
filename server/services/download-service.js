@@ -54,6 +54,15 @@ class DownloadService {
       }
     }
 
+    for (const style of styles) {
+      if (style.backgroundImage) {
+        const sourceFilePath = `${allImagesFolderPath}${style.backgroundImage}`;
+        const destinationFilePath = `${imagesFolderPath}${style.backgroundImage}`;
+
+        fs.copyFileSync(sourceFilePath, destinationFilePath);
+      }
+    }
+
     htmlService.createHtmlStart(htmlFile, project.name);
 
     for (const block of blocks) {
