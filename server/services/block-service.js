@@ -14,6 +14,8 @@ const ParagraphImageBlockModel = require("../models/blocks/paragraph-image-block
 const ParagraphImageStylesModel = require("../models/styles/paragraph-image-styles-model");
 const CoverBlockModel = require("../models/blocks/cover-block-model");
 const CoverStylesModel = require("../models/styles/cover-styles-model");
+const TitleBlockModel = require("../models/blocks/title-block-model");
+const TitleStylesModel = require("../models/styles/title-styles-model");
 
 class BlockService {
   async create(data) {
@@ -58,6 +60,13 @@ class BlockService {
       case "CoverBlock":
         block = await CoverBlockModel.create(data);
         await CoverStylesModel.create({
+          blockId: block._id,
+          projectId: block.projectId,
+        });
+        break;
+      case "TitleBlock":
+        block = await TitleBlockModel.create(data);
+        await TitleStylesModel.create({
           blockId: block._id,
           projectId: block.projectId,
         });
