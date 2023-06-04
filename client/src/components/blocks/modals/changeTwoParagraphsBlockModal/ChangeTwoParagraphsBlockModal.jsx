@@ -17,7 +17,7 @@ const ChangeTwoParagraphsBlockModal = ({ active, setActive, id }) => {
   useEffect(() => {
     textRef.current.value = block.text;
     text2Ref.current.value = block.text2;
-  }, [active, block.text, block.text2]);
+  }, [block.text, block.text2]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
