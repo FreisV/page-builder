@@ -9,6 +9,10 @@
   --hover-color: rgb(49, 155, 255);
 }
 
+.oneColumnWrapper {
+  width: 100%;
+}
+
 .twoColumnsWrapper {
   width: 49%;
 }
@@ -26,27 +30,37 @@
 
 .image-wrapper {
   display: flex;
-	align-items: center;
-	justify-content: center;
-	
+  align-items: center;
+  justify-content: center;
 }
 
 .image {
   max-width: 100%;
 }
 
-.title {
+.cover_title {
   font-size: 55px;
   margin: 20px 0;
   font-weight: 600;
 }
 
-.subtitle {
+.cover_subtitle {
   font-size: 24px;
   margin: 20px 0 30px 0;
   font-weight: 500;
 }
 
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
 
 @media (max-width: 768px) {
   .twoColumnsWrapper {
@@ -61,17 +75,26 @@
     font-size: 14px;
   }
 
-  .title {
+  .cover_title {
     font-size: 35px;
+    margin: 12px 0;
   }
-  
-  .subtitle {
+
+  .cover_subtitle {
     font-size: 18px;
+    margin: 12px 0 20px 0;
   }
 
+  .title {
+    font-size: 25px;
+    margin-bottom: 7px;
+  }
 
+  .subtitle {
+    font-size: 17px;
+    margin-bottom: 7px;
+  }
 }
-
 
 .modal-open {
   overflow: hidden;
