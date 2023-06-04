@@ -11,9 +11,9 @@ const CoverBlock = ({ id, ...otherProps }) => {
 
   return (
     <BlockWrapper blockStyles={blockStyles}>
-      <div>
+      <div class="oneColumnWrapper">
         <h1
-          className="title"
+          className="cover_title"
           style={{
             color: blockStyles?.titleColor,
             textAlign: blockStyles?.titleAlign,
@@ -22,7 +22,7 @@ const CoverBlock = ({ id, ...otherProps }) => {
           {block.title}
         </h1>
         <h3
-          className="subtitle"
+          className="cover_subtitle"
           style={{
             color: blockStyles?.subtitleColor,
             textAlign: blockStyles?.subtitleAlign,
@@ -31,7 +31,7 @@ const CoverBlock = ({ id, ...otherProps }) => {
           {block.subtitle}
         </h3>
         <p
-          className="paragraph"
+          className="cover_paragraph"
           style={{
             color: blockStyles?.descriptionColor,
             textAlign: blockStyles?.descriptionAlign,
