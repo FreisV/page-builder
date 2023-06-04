@@ -5,7 +5,13 @@ import Button from "../../components/button/Button";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProject, getProject, updateProject } from "../../store/reducers/requestReducer/actions/projectActions";
+import {
+  deleteProject,
+  getProject,
+  updateProject,
+} from "../../store/reducers/requestReducer/actions/projectActions";
+import Input from "../../components/input/Input";
+import Checkbox from "../../components/checkbox/Checkbox";
 
 const UpdateProject = () => {
   const name = useRef();
@@ -35,7 +41,9 @@ const UpdateProject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await dispatch(updateProject(params.id, name.current.value, isOpen.current.checked));
+      const res = await dispatch(
+        updateProject(params.id, name.current.value, isOpen.current.checked)
+      );
       console.log(res);
       navigate("/projects");
     } catch (e) {
@@ -51,19 +59,19 @@ const UpdateProject = () => {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   useEffect(() => {
     if (error) {
       setErrorMessage(error.message);
     }
-  }, [error])
+  }, [error]);
 
   useEffect(() => {
     if (errorMessage !== "") {
       setErrorMessageActive(true);
     }
-  }, [errorMessage])
+  }, [errorMessage]);
 
   return (
     <>
@@ -71,19 +79,13 @@ const UpdateProject = () => {
       <main className={styles.wrapper}>
         <h2 className={styles.title}>Настройки проекта</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <input
-            className={styles.input}
-            ref={name}
-            type="text"
-            placeholder="Название"
-          />
-          <label className={styles.label}>
-            <input className={styles.checkbox} ref={isOpen} type="checkbox" />{" "}
-            Доступен к просмотру ?
-          </label>
+          <Input forwardedRef={name} placeholder="Название" />
+          <Checkbox forwardedRef={isOpen} desc="Доступен к просмотру ?" />
           <Button type="submit">Сохранить</Button>
         </form>
-        <Button isRed={true} onClick={handleDelete}>Удалить проект</Button>
+        <Button isRed={true} onClick={handleDelete}>
+          Удалить проект
+        </Button>
       </main>
 
       <ErrorMessage

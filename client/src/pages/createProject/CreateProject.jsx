@@ -6,6 +6,8 @@ import { createProject } from "../../store/reducers/requestReducer/actions/proje
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import Input from "../../components/input/Input";
+import Checkbox from "../../components/checkbox/Checkbox";
 
 const CreateProject = () => {
   const name = useRef();
@@ -19,7 +21,9 @@ const CreateProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const project = await dispatch(createProject(name.current.value, isOpen.current.checked));
+    const project = await dispatch(
+      createProject(name.current.value, isOpen.current.checked)
+    );
     if (project) {
       navigate("/projects");
     }
@@ -29,13 +33,13 @@ const CreateProject = () => {
     if (error) {
       setErrorMessage(error.message);
     }
-  }, [error])
+  }, [error]);
 
   useEffect(() => {
     if (errorMessage !== "") {
       setErrorMessageActive(true);
     }
-  }, [errorMessage])
+  }, [errorMessage]);
 
   return (
     <>
@@ -43,20 +47,12 @@ const CreateProject = () => {
       <main className={styles.wrapper}>
         <h2 className={styles.title}>Создать новый проект</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <input
-            className={styles.input}
-            ref={name}
-            type="text"
-            placeholder="Название"
-          />
-          <label className={styles.label}>
-            <input className={styles.checkbox} ref={isOpen} type="checkbox" />{" "}
-            Доступен к просмотру ?
-          </label>
+          <Input forwardedRef={name} placeholder="Название" />
+          <Checkbox forwardedRef={isOpen} desc="Доступен к просмотру ?" />
           <Button type="submit">Создать</Button>
         </form>
       </main>
-      
+
       <ErrorMessage
         active={errorMessageActive}
         setActive={setErrorMessageActive}
