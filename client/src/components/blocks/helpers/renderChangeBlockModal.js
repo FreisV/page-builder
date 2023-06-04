@@ -4,6 +4,7 @@ import ChangeParagraphBlockModal from "../modals/changeParagraphBlockModal/Chang
 import ChangeTwoParagraphsBlockModal from "../modals/changeTwoParagraphsBlockModal/ChangeTwoParagraphsBlockModal";
 import ChangeParagraphImageBlockModal from "../modals/changeParagraphImageBlockModal/ChangeParagraphImageBlockModal";
 import ChangeCoverBlockModal from "../modals/changeCoverBlockModal/ChangeCoverBlockModal";
+import ChangeTitleBlockModal from "../modals/changeTitleBlockModal/ChangeTitleBlockModal";
 export default function renderChangeBlockModal(active, setActive, block) {
   switch (block.type) {
     case "ButtonBlock":
@@ -49,6 +50,14 @@ export default function renderChangeBlockModal(active, setActive, block) {
     case "CoverBlock":
       return (
         <ChangeCoverBlockModal
+          active={active}
+          setActive={setActive}
+          id={block.id}
+        />
+      );
+    case "TitleBlock":
+      return (
+        <ChangeTitleBlockModal
           active={active}
           setActive={setActive}
           id={block.id}

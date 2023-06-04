@@ -3,6 +3,7 @@ import CoverBlock from "../coverBlock/CoverBlock";
 import ImageBlock from "../imageBlock/ImageBlock";
 import ParagraphBlock from "../paragraphBlock/ParagraphBlock";
 import ParagraphImageBlock from "../paragraphImageBlock/ParagraphImageBlock";
+import TitleBlock from "../titleBlock/TitleBlock";
 import TwoParagraphsBlock from "../twoParagraphsBlock/TwoParagraphsBlock";
 
 export default function renderBlock(data) {
@@ -19,6 +20,8 @@ export default function renderBlock(data) {
       return <ParagraphImageBlock id={data.id} />;
     case "CoverBlock":
       return <CoverBlock id={data.id} />;
+    case "TitleBlock":
+      return <TitleBlock id={data.id} />;
     default:
       return null;
   }
