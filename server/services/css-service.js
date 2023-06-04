@@ -33,8 +33,8 @@ class CssService {
         cursor: pointer;
       }
 
-      .paragraph-wrapper {
-        width:100%;
+      .one-column-wrapper {
+        width: 100%;
       }
 
       .two-columns-wrapper {
@@ -60,15 +60,27 @@ class CssService {
         max-width: 100%;
       }
 
-      .title {
+      .cover_title {
         font-size: 55px;
         margin: 20px 0;
         font-weight: 600;
       }
       
-      .subtitle {
+      .cover_subtitle {
         font-size: 24px;
         margin: 20px 0 30px 0;
+        font-weight: 500;
+      }
+
+      .title {
+        font-size: 30px;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+      
+      .subtitle {
+        font-size: 22px;
+        margin-bottom: 10px;
         font-weight: 500;
       }
 
@@ -85,12 +97,24 @@ class CssService {
           font-size: 14px;
         }
       
-        .title {
+        .cover_title {
           font-size: 35px;
+          margin: 12px 0;
         }
-        
-        .subtitle {
+      
+        .cover_subtitle {
           font-size: 18px;
+          margin: 12px 0 20px 0;
+        }
+
+        .title {
+          font-size: 25px;
+          margin-bottom: 7px;
+        }
+      
+        .subtitle {
+          font-size: 17px;
+          margin-bottom: 7px;
         }
       }
       `
@@ -126,6 +150,10 @@ class CssService {
       case "CoverStyles":
         this.writeBlockStylesToCss(cssFile, styles);
         this.writeCoverStylesToCss(cssFile, styles);
+        break;
+      case "TitleStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeTitleStylesToCss(cssFile, styles);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -234,6 +262,29 @@ class CssService {
   }
 
   writeCoverStylesToCss(cssFile, styles) {
+    fs.appendFileSync(
+      cssFile,
+      `
+      .block-${styles.blockId}__cover_title {
+        color: ${styles.titleColor};
+        text-align: ${styles.titleAlign};
+      }
+
+      .block-${styles.blockId}__cover_subtitle {
+        color: ${styles.subtitleColor};
+        text-align: ${styles.subtitleAlign};
+      }
+
+      .block-${styles.blockId}__paragraph {
+        color: ${styles.descriptionColor};
+        text-align: ${styles.descriptionAlign};
+      }
+
+      `
+    );
+  }
+
+  writeTitleStylesToCss(cssFile, styles) {
     fs.appendFileSync(
       cssFile,
       `
