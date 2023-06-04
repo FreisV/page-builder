@@ -11,6 +11,15 @@ const ParagraphImageBlock = ({ id, ...otherProps }) => {
   return (
     <BlockWrapper blockStyles={blockStyles}>
       <div className="twoColumnsWrapper">
+        <h3
+          className="subtitle"
+          style={{
+            color: blockStyles?.subtitleColor,
+            textAlign: blockStyles?.subtitleAlign,
+          }}
+        >
+          {block.subtitle}
+        </h3>
         <p
           className="paragraph"
           style={{

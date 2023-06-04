@@ -138,9 +138,12 @@ class HtmlService {
       <div class="block block-${block.id}">
         <div class="wrapper">
           <div class="two-columns-wrapper">
-            <p class="paragraph block-${block.id}__paragraph">
-              ${encode(block.text)}
-            </p>
+            <h3 class="subtitle block-${block.id}__subtitle">
+              ${encode(block.subtitle)}
+            </h3>
+            <p class="paragraph block-${block.id}__paragraph">${encode(
+        block.text
+      )}</p>
           </div>
           <div class="two-columns-wrapper image-wrapper">
             <img

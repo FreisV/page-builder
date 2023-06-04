@@ -3,6 +3,16 @@ const StylesModel = require("./styles-model");
 
 const ParagraphImageStylesSchema = new mongoose.Schema(
   {
+    subtitleColor: {
+      type: String,
+      required: true,
+      default: "#000000",
+    },
+    subtitleAlign: {
+      type: String,
+      required: true,
+      default: "left",
+    },
     color: {
       type: String,
       required: true,

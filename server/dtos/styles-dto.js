@@ -23,6 +23,8 @@ module.exports = class StylesDto {
     } else if (styles.type === "ImageStyles") {
       this.maxHeight = styles.maxHeight;
     } else if (styles.type === "ParagraphImageStyles") {
+      this.subtitleColor = styles.subtitleColor;
+      this.subtitleAlign = styles.subtitleAlign;
       this.color = styles.color;
       this.textAlign = styles.textAlign;
       this.maxHeight = styles.maxHeight;

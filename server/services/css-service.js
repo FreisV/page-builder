@@ -248,6 +248,11 @@ class CssService {
     fs.appendFileSync(
       cssFile,
       `
+      .block-${styles.blockId}__subtitle {
+        color: ${styles.subtitleColor};
+        text-align: ${styles.subtitleAlign};
+      }
+
       .block-${styles.blockId}__paragraph {
         color: ${styles.color};
         text-align: ${styles.textAlign};

@@ -8,6 +8,7 @@ import ImageInput from "../../../imageInput/ImageInput";
 
 const ChangeParagraphImageBlockModal = ({ active, setActive, id }) => {
   const params = useParams();
+  const subtitleRef = useRef();
   const textRef = useRef();
   const [image, setImage] = useState(null);
 
@@ -16,8 +17,9 @@ const ChangeParagraphImageBlockModal = ({ active, setActive, id }) => {
   const block = blocks.find((block) => block.id === id);
 
   useEffect(() => {
+    subtitleRef.current.value = block.subtitle
     textRef.current.value = block.text;
-  }, [active, block.text]);
+  }, [block.subtitle, block.text]);
 
   const handleChangeImage = (e) => {
     e.preventDefault();
@@ -27,6 +29,8 @@ const ChangeParagraphImageBlockModal = ({ active, setActive, id }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
+      const subtitle = subtitleRef.current.value;
+      const text = textRef.current.value;
       if (image) {
         const imageExtension = image.name.split(".").pop();
         const filename = block.id + "." + imageExtension;
@@ -37,12 +41,14 @@ const ChangeParagraphImageBlockModal = ({ active, setActive, id }) => {
           formData.set(key, block[key]);
         }
 
+        formData.set("subtitle", subtitle);
+        formData.set("text", text);
+
         formData.set("filename", filename);
 
         await dispatch(updateBlock(params.id, formData));
       } else {
-        const text = textRef.current.value;
-        await dispatch(updateBlock(params.id, { ...block, text }));
+        await dispatch(updateBlock(params.id, { ...block, subtitle, text }));
       }
       setActive(false);
     } catch (e) {
@@ -56,7 +62,8 @@ const ChangeParagraphImageBlockModal = ({ active, setActive, id }) => {
       setActive={setActive}
       handleUpdate={handleUpdate}
     >
-      <Textarea placeholder="Первый текст" forwardedRef={textRef} />
+      <Textarea placeholder="Заголовок" forwardedRef={subtitleRef} />
+      <Textarea placeholder="Текст" forwardedRef={textRef} />
       <ImageInput
         handleChange={handleChangeImage}
         desc={"Выберите изображение"}

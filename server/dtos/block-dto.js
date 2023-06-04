@@ -15,6 +15,7 @@ module.exports = class BlockDto {
     } else if (block.type === "ImageBlock") {
       this.filename = block.filename;
     } else if (block.type === "ParagraphImageBlock") {
+      this.subtitle = block.subtitle;
       this.text = block.text;
       this.filename = block.filename;
     } else if (block.type === "CoverBlock") {

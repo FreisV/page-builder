@@ -3,6 +3,11 @@ const BlockModel = require("./block-model");
 
 const ParagraphImageBlockSchema = new mongoose.Schema(
   {
+    subtitle: {
+      type: String,
+      required: true,
+      default: "Подзаголовок",
+    },
     text: {
       type: String,
       required: true,

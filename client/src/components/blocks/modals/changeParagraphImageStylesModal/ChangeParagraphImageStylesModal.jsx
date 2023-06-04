@@ -10,6 +10,8 @@ import Select from "../../../select/Select";
 const ChangeParagraphImageStylesModal = ({ active, setActive, blockId }) => {
   const params = useParams();
 
+  const subtitleColorRef = useRef();
+  const subtitleAlignRef = useRef();
   const colorRef = useRef();
   const textAlignRef = useRef();
   const maxHeightRef = useRef();
@@ -23,6 +25,9 @@ const ChangeParagraphImageStylesModal = ({ active, setActive, blockId }) => {
   const blockStyles = blocksStyles.find((styles) => styles.blockId === blockId);
 
   useEffect(() => {
+    console.log(blockStyles?.textAlign);
+    subtitleColorRef.current.value = blockStyles?.subtitleColor;
+    subtitleAlignRef.current.value = blockStyles?.subtitleAlign;
     colorRef.current.value = blockStyles?.color;
     textAlignRef.current.value = blockStyles?.textAlign;
     maxHeightRef.current.value = blockStyles?.maxHeight;
@@ -31,6 +36,8 @@ const ChangeParagraphImageStylesModal = ({ active, setActive, blockId }) => {
     paddingBottomRef.current.value = blockStyles?.paddingBottom;
     backgroundColorRef.current.value = blockStyles?.backgroundColor;
   }, [
+    blockStyles?.subtitleColor,
+    blockStyles?.subtitleAlign,
     blockStyles?.color,
     blockStyles?.textAlign,
     blockStyles?.maxHeight,
@@ -42,6 +49,8 @@ const ChangeParagraphImageStylesModal = ({ active, setActive, blockId }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
+      const subtitleColor = subtitleColorRef.current.value;
+      const subtitleAlign = subtitleAlignRef.current.value;
       const color = colorRef.current.value;
       const textAlign = textAlignRef.current.value;
       const enteredMaxHeight = parseFloat(maxHeightRef.current.value);
@@ -56,6 +65,8 @@ const ChangeParagraphImageStylesModal = ({ active, setActive, blockId }) => {
         updateStyles(params.id, {
           ...blockStyles,
 
+          subtitleColor,
+          subtitleAlign,
           color,
           textAlign,
           maxHeight,
@@ -84,6 +95,12 @@ const ChangeParagraphImageStylesModal = ({ active, setActive, blockId }) => {
       setActive={setActive}
       handleUpdate={handleUpdate}
     >
+      <ColorInput desc="Цвет заголовка" forwardedRef={subtitleColorRef} />
+      <Select
+        desc="Выравнивание заголовка"
+        values={values}
+        forwardedRef={subtitleAlignRef}
+      />
       <ColorInput desc="Цвет текста" forwardedRef={colorRef} />
       <Select
         desc="Выравнивание текста"
