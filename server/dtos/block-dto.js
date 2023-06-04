@@ -17,6 +17,10 @@ module.exports = class BlockDto {
     } else if (block.type === "ParagraphImageBlock") {
       this.text = block.text;
       this.filename = block.filename;
+    } else if (block.type === "CoverBlock") {
+      this.title = block.title;
+      this.subtitle = block.subtitle;
+      this.description = block.description;
     }
   }
 };

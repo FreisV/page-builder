@@ -26,6 +26,15 @@ module.exports = class StylesDto {
       this.color = styles.color;
       this.textAlign = styles.textAlign;
       this.maxHeight = styles.maxHeight;
+    } else if (styles.type === "CoverStyles") {
+      this.minHeight = styles.minHeight;
+      this.backgroundImage = styles.backgroundImage;
+      this.titleColor = styles.titleColor;
+      this.titleAlign = styles.titleAlign;
+      this.subtitleColor = styles.subtitleColor;
+      this.subtitleAlign = styles.subtitleAlign;
+      this.descriptionColor = styles.descriptionColor;
+      this.descriptionAlign = styles.descriptionAlign;
     }
   }
 };
