@@ -3,6 +3,7 @@ import ChangeCoverStylesModal from "../modals/changeCoverStylesModal/ChangeCover
 import ChangeImageStylesModal from "../modals/changeImageStylesModal/ChangeImageStylesModal";
 import ChangeParagraphImageStylesModal from "../modals/changeParagraphImageStylesModal/ChangeParagraphImageStylesModal";
 import ChangeParagraphStylesModal from "../modals/changeParagraphStylesModal/ChangeParagraphStylesModal";
+import ChangeSocialNetworksStylesModal from "../modals/changeSocialNetworksStylesModal/ChangeSocialNetworksStylesModal";
 import ChangeTitleStylesModal from "../modals/changeTitleStylesModal/ChangeTitleStylesModal";
 import ChangeTwoParagraphsStylesModal from "../modals/changeTwoParagraphsStylesModal/ChangeTwoParagraphsStylesModal";
 
@@ -59,6 +60,14 @@ export default function renderChangeStylesModal(active, setActive, block) {
     case "TitleBlock":
       return (
         <ChangeTitleStylesModal
+          active={active}
+          setActive={setActive}
+          blockId={block.id}
+        />
+      );
+    case "SocialNetworksBlock":
+      return (
+        <ChangeSocialNetworksStylesModal
           active={active}
           setActive={setActive}
           blockId={block.id}

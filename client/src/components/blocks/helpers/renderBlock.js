@@ -3,6 +3,7 @@ import CoverBlock from "../coverBlock/CoverBlock";
 import ImageBlock from "../imageBlock/ImageBlock";
 import ParagraphBlock from "../paragraphBlock/ParagraphBlock";
 import ParagraphImageBlock from "../paragraphImageBlock/ParagraphImageBlock";
+import SocialNetworksBlock from "../socialNetworksBlock/SocialNetworksBlock";
 import TitleBlock from "../titleBlock/TitleBlock";
 import TwoParagraphsBlock from "../twoParagraphsBlock/TwoParagraphsBlock";
 
@@ -22,6 +23,8 @@ export default function renderBlock(data) {
       return <CoverBlock id={data.id} />;
     case "TitleBlock":
       return <TitleBlock id={data.id} />;
+    case "SocialNetworksBlock":
+      return <SocialNetworksBlock id={data.id} />;
     default:
       return null;
   }

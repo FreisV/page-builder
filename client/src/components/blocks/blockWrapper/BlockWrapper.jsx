@@ -3,15 +3,21 @@ import styles from "./styles.module.css";
 import { API_URL } from "../../../http";
 
 const BlockWrapper = ({ blockStyles, children }) => {
-  return (
-    <div
-      className={styles.block}
-      style={{
-        backgroundColor: blockStyles?.backgroundColor,
+  const backgroundImage = blockStyles?.backgroundImage
+    ? {
         backgroundImage: `url(${API_URL}/images/${blockStyles?.backgroundImage})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
+      }
+    : {};
+
+  return (
+    <div
+      className={styles.block}
+      style={{
+        ...backgroundImage,
+        backgroundColor: blockStyles?.backgroundColor,
         minHeight: blockStyles?.minHeight,
         paddingTop: blockStyles?.paddingTop,
         paddingBottom: blockStyles?.paddingBottom,

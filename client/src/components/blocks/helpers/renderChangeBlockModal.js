@@ -5,6 +5,7 @@ import ChangeTwoParagraphsBlockModal from "../modals/changeTwoParagraphsBlockMod
 import ChangeParagraphImageBlockModal from "../modals/changeParagraphImageBlockModal/ChangeParagraphImageBlockModal";
 import ChangeCoverBlockModal from "../modals/changeCoverBlockModal/ChangeCoverBlockModal";
 import ChangeTitleBlockModal from "../modals/changeTitleBlockModal/ChangeTitleBlockModal";
+import ChangeSocialNetworksBlockModal from "../modals/changeSocialNetworksBlockModal/ChangeSocialNetworksBlockModal";
 export default function renderChangeBlockModal(active, setActive, block) {
   switch (block.type) {
     case "ButtonBlock":
@@ -58,6 +59,14 @@ export default function renderChangeBlockModal(active, setActive, block) {
     case "TitleBlock":
       return (
         <ChangeTitleBlockModal
+          active={active}
+          setActive={setActive}
+          id={block.id}
+        />
+      );
+    case "SocialNetworksBlock":
+      return (
+        <ChangeSocialNetworksBlockModal
           active={active}
           setActive={setActive}
           id={block.id}

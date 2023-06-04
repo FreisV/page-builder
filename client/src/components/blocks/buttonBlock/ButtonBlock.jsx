@@ -10,7 +10,7 @@ const ButtonBlock = ({ id, ...otherProps }) => {
   return (
     <BlockWrapper blockStyles={blockStyles}>
       <span>
-        <button
+        <button className="button"
           style={{
             color: blockStyles?.color,
             backgroundColor: blockStyles?.buttonBackgroundColor,
@@ -18,10 +18,6 @@ const ButtonBlock = ({ id, ...otherProps }) => {
               blockStyles?.buttonBorderWidth +
               " solid " +
               blockStyles?.buttonBorderColor,
-
-            padding: "20px 60px",
-            fontSize: "19px",
-            fontWeight: "600",
           }}
         >
           {block.text}

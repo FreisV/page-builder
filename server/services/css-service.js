@@ -84,6 +84,42 @@ class CssService {
         font-weight: 500;
       }
 
+      .social-networks {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .social-network {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        height: 50px;
+        margin: 0 5px;
+        border-radius: 5px;
+      }
+      
+      .social-network_icon {
+        height: 30px;
+      }
+      
+      .facebook {
+        background-color: #385898;
+      }
+      
+      .instagram {
+        background-color: #E1306C;
+      }
+      
+      .vk {
+        background-color: #07f;
+      }
+      
+      .telegram {
+        background-color: #0088cc;
+      }
+
       @media (max-width: 768px) {
         .two-columns-wrapper {
           width: 100%;
@@ -154,6 +190,9 @@ class CssService {
       case "TitleStyles":
         this.writeBlockStylesToCss(cssFile, styles);
         this.writeTitleStylesToCss(cssFile, styles);
+        break;
+      case "SocialNetworksStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");

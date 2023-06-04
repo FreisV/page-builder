@@ -78,6 +78,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
         >
           Заголовок
         </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("SocialNetworksBlock", newBlockNumber)}
+        >
+          Социальные сети
+        </button>
       </div>
       <div className={styles.close}></div>
     </Modal>
