@@ -1,4 +1,5 @@
 import ChangeButtonStylesModal from "../modals/changeButtonStylesModal/ChangeButtonStylesModal";
+import ChangeCoverStylesModal from "../modals/changeCoverStylesModal/ChangeCoverStylesModal";
 import ChangeImageStylesModal from "../modals/changeImageStylesModal/ChangeImageStylesModal";
 import ChangeParagraphImageStylesModal from "../modals/changeParagraphImageStylesModal/ChangeParagraphImageStylesModal";
 import ChangeParagraphStylesModal from "../modals/changeParagraphStylesModal/ChangeParagraphStylesModal";
@@ -41,6 +42,14 @@ export default function renderChangeStylesModal(active, setActive, block) {
     case "ParagraphImageBlock":
       return (
         <ChangeParagraphImageStylesModal
+          active={active}
+          setActive={setActive}
+          blockId={block.id}
+        />
+      );
+    case "CoverBlock":
+      return (
+        <ChangeCoverStylesModal
           active={active}
           setActive={setActive}
           blockId={block.id}

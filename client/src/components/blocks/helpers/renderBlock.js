@@ -1,4 +1,5 @@
 import ButtonBlock from "../buttonBlock/ButtonBlock";
+import CoverBlock from "../coverBlock/CoverBlock";
 import ImageBlock from "../imageBlock/ImageBlock";
 import ParagraphBlock from "../paragraphBlock/ParagraphBlock";
 import ParagraphImageBlock from "../paragraphImageBlock/ParagraphImageBlock";
@@ -16,6 +17,8 @@ export default function renderBlock(data) {
       return <ImageBlock id={data.id} />;
     case "ParagraphImageBlock":
       return <ParagraphImageBlock id={data.id} />;
+    case "CoverBlock":
+      return <CoverBlock id={data.id} />;
     default:
       return null;
   }
