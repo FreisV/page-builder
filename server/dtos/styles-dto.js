@@ -44,6 +44,11 @@ module.exports = class StylesDto {
       this.subtitleAlign = styles.subtitleAlign;
       this.descriptionColor = styles.descriptionColor;
       this.descriptionAlign = styles.descriptionAlign;
+    } else if (styles.type === "TeamStyles") {
+      this.nameColor = styles.nameColor;
+      this.nameAlign = styles.nameAlign;
+      this.infoColor = styles.infoColor;
+      this.infoAlign = styles.infoAlign;
     }
   }
 };

@@ -4,6 +4,7 @@ import ChangeImageStylesModal from "../modals/changeImageStylesModal/ChangeImage
 import ChangeParagraphImageStylesModal from "../modals/changeParagraphImageStylesModal/ChangeParagraphImageStylesModal";
 import ChangeParagraphStylesModal from "../modals/changeParagraphStylesModal/ChangeParagraphStylesModal";
 import ChangeSocialNetworksStylesModal from "../modals/changeSocialNetworksStylesModal/ChangeSocialNetworksStylesModal";
+import ChangeTeamStylesModal from "../modals/changeTeamStylesModal/ChangeTeamStylesModal";
 import ChangeTitleStylesModal from "../modals/changeTitleStylesModal/ChangeTitleStylesModal";
 import ChangeTwoParagraphsStylesModal from "../modals/changeTwoParagraphsStylesModal/ChangeTwoParagraphsStylesModal";
 
@@ -68,6 +69,14 @@ export default function renderChangeStylesModal(active, setActive, block) {
     case "SocialNetworksBlock":
       return (
         <ChangeSocialNetworksStylesModal
+          active={active}
+          setActive={setActive}
+          blockId={block.id}
+        />
+      );
+    case "TeamBlock":
+      return (
+        <ChangeTeamStylesModal
           active={active}
           setActive={setActive}
           blockId={block.id}

@@ -84,6 +84,12 @@ const CreateBlockModal = ({ active, setActive, newBlockNumber }) => {
         >
           Социальные сети
         </button>
+        <button
+          className={styles.button}
+          onClick={() => createNewBlock("TeamBlock", newBlockNumber)}
+        >
+          Наша команда
+        </button>
       </div>
       <div className={styles.close}></div>
     </Modal>

@@ -58,7 +58,10 @@ class HtmlService {
         this.writeTitleBlockToHtml(htmlFile, block);
         break;
       case "SocialNetworksBlock":
-        this.writeSocialNetworksBlockBlockToHtml(htmlFile, block);
+        this.writeSocialNetworksBlockToHtml(htmlFile, block);
+        break;
+      case "TeamBlock":
+        this.writeTeamBlockToHtml(htmlFile, block);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -204,7 +207,7 @@ class HtmlService {
     );
   }
 
-  writeSocialNetworksBlockBlockToHtml(htmlFile, block) {
+  writeSocialNetworksBlockToHtml(htmlFile, block) {
     const { id, facebookLink, vkLink, instagramLink, telegramLink } = block;
 
     const facebookBlock = facebookLink
@@ -299,6 +302,76 @@ class HtmlService {
         ${telegramBlock}
       </div>
        </div>
+      </div>`;
+
+    fs.appendFileSync(htmlFile, htmlContent);
+  }
+
+  writeTeamBlockToHtml(htmlFile, block) {
+    const {
+      filename,
+      name,
+      info,
+      filename2,
+      name2,
+      info2,
+      filename3,
+      name3,
+      info3,
+    } = block;
+
+    const firstCard =
+      name || info
+        ? `
+        <div class="team-card">
+          <img
+            src="images\\${filename}"
+            alt=""
+            class="team-card__image block-${block.id}__team-card__image"
+          />
+          <h3 class="subtitle block-${block.id}__subtitle">${name}</h3>
+          <p class="paragraph block-${block.id}__paragraph">${info}</p>
+        </div>
+      `
+        : "";
+    const secondCard =
+      name2 || info2
+        ? `
+        <div class="team-card">
+          <img
+            src="images\\${filename2}"
+            alt=""
+            class="team-card__image block-${block.id}__team-card__image"
+          />
+          <h3 class="subtitle block-${block.id}__subtitle">${name2}</h3>
+          <p class="paragraph block-${block.id}__paragraph">${info2}</p>
+        </div>
+      `
+        : "";
+    const thirdCard =
+      name3 || info3
+        ? `
+        <div class="team-card">
+          <img
+            src="images\\${filename3}"
+            alt=""
+            class="team-card__image block-${block.id}__team-card__image"
+          />
+          <h3 class="subtitle block-${block.id}__subtitle">${name3}</h3>
+          <p class="paragraph block-${block.id}__paragraph">${info3}</p>
+        </div>
+      `
+        : "";
+
+    const htmlContent = `
+      <div class="block block-${block.id}">
+        <div class="wrapper">
+          <div class="cards">
+            ${firstCard}
+            ${secondCard}
+            ${thirdCard}
+          </div>
+        </div>
       </div>`;
 
     fs.appendFileSync(htmlFile, htmlContent);

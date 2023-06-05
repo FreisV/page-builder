@@ -18,6 +18,8 @@ const TitleBlockModel = require("../models/blocks/title-block-model");
 const TitleStylesModel = require("../models/styles/title-styles-model");
 const SocialNetworksBlockModel = require("../models/blocks/social-networks-block-model");
 const SocialNetworksStylesModel = require("../models/styles/social-networks-styles-model");
+const TeamBlockModel = require("../models/blocks/team-block-model");
+const TeamStylesModel = require("../models/styles/team-styles-model");
 
 class BlockService {
   async create(data) {
@@ -76,6 +78,13 @@ class BlockService {
       case "SocialNetworksBlock":
         block = await SocialNetworksBlockModel.create(data);
         await SocialNetworksStylesModel.create({
+          blockId: block._id,
+          projectId: block.projectId,
+        });
+        break;
+      case "TeamBlock":
+        block = await TeamBlockModel.create(data);
+        await TeamStylesModel.create({
           blockId: block._id,
           projectId: block.projectId,
         });

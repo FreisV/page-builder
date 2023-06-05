@@ -102,6 +102,24 @@
   background-color: #0088cc;
 }
 
+.cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.team-card {
+  width: 260px;
+  margin-bottom: 20px;
+}
+
+.team-card__image {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .twoColumnsWrapper {
     width: 100%;

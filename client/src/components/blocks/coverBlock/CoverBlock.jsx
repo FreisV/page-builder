@@ -7,11 +7,9 @@ const CoverBlock = ({ id, ...otherProps }) => {
   const block = blocks.find((block) => block.id === id);
   const blockStyles = blocksStyles.find((style) => style.blockId === id);
 
-  console.log(blockStyles);
-
   return (
     <BlockWrapper blockStyles={blockStyles}>
-      <div class="oneColumnWrapper">
+      <div className="oneColumnWrapper">
         <h1
           className="cover_title"
           style={{
@@ -31,7 +29,7 @@ const CoverBlock = ({ id, ...otherProps }) => {
           {block.subtitle}
         </h3>
         <p
-          className="cover_paragraph"
+          className="paragraph"
           style={{
             color: blockStyles?.descriptionColor,
             textAlign: blockStyles?.descriptionAlign,

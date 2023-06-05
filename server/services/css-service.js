@@ -120,6 +120,24 @@ class CssService {
         background-color: #0088cc;
       }
 
+      .cards {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      
+      .team-card {
+        width: 260px;
+        margin-bottom: 20px;
+      }
+      
+      .team-card__image {
+        width: 260px;
+        height: 260px;
+        object-fit: cover;
+      }
+
       @media (max-width: 768px) {
         .two-columns-wrapper {
           width: 100%;
@@ -193,6 +211,10 @@ class CssService {
         break;
       case "SocialNetworksStyles":
         this.writeBlockStylesToCss(cssFile, styles);
+        break;
+      case "TeamStyles":
+        this.writeBlockStylesToCss(cssFile, styles);
+        this.writeTeamStylesToCss(cssFile, styles);
         break;
       default:
         throw ApiError.BadRequest("Неизвестный тип блока");
@@ -345,6 +367,24 @@ class CssService {
       .block-${styles.blockId}__paragraph {
         color: ${styles.descriptionColor};
         text-align: ${styles.descriptionAlign};
+      }
+
+      `
+    );
+  }
+
+  writeTeamStylesToCss(cssFile, styles) {
+    fs.appendFileSync(
+      cssFile,
+      `
+      .block-${styles.blockId}__subtitle {
+        color: ${styles.nameColor};
+        text-align: ${styles.nameAlign};
+      }
+
+      .block-${styles.blockId}__paragraph {
+        color: ${styles.infoColor};
+        text-align: ${styles.infoAlign};
       }
 
       `

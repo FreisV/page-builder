@@ -4,6 +4,7 @@ import ImageBlock from "../imageBlock/ImageBlock";
 import ParagraphBlock from "../paragraphBlock/ParagraphBlock";
 import ParagraphImageBlock from "../paragraphImageBlock/ParagraphImageBlock";
 import SocialNetworksBlock from "../socialNetworksBlock/SocialNetworksBlock";
+import TeamBlock from "../teamBlock/TeamBlock";
 import TitleBlock from "../titleBlock/TitleBlock";
 import TwoParagraphsBlock from "../twoParagraphsBlock/TwoParagraphsBlock";
 
@@ -25,6 +26,8 @@ export default function renderBlock(data) {
       return <TitleBlock id={data.id} />;
     case "SocialNetworksBlock":
       return <SocialNetworksBlock id={data.id} />;
+    case "TeamBlock":
+      return <TeamBlock id={data.id} />;
     default:
       return null;
   }

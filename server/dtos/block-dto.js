@@ -31,6 +31,16 @@ module.exports = class BlockDto {
       this.vkLink = block.vkLink;
       this.instagramLink = block.instagramLink;
       this.telegramLink = block.telegramLink;
+    } else if (block.type === "TeamBlock") {
+      this.filename = block.filename;
+      this.name = block.name;
+      this.info = block.info;
+      this.filename2 = block.filename2;
+      this.name2 = block.name2;
+      this.info2 = block.info2;
+      this.filename3 = block.filename3;
+      this.name3 = block.name3;
+      this.info3 = block.info3;
     }
   }
 };

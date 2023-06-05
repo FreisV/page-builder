@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./styles.module.css";
 
 const Select = ({ forwardedRef, desc, values, ...otherProps }) => {
+  console.log(values);
+
   return (
     <div className={styles.wrapper}>
       <label className={styles.label}>{desc}:</label>
