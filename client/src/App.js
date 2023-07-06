@@ -11,6 +11,9 @@ import { useSelector } from "react-redux";
 import CreateProject from "./pages/createProject/CreateProject";
 import UpdateProject from "./pages/updateProject/UpdateProject";
 import Project from "./pages/project/Project";
+import Profile from "./pages/profile/Profile";
+import NotFound from "./pages/notFound/NotFound";
+import Help from "./pages/help/Help";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -18,6 +21,11 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/help" element={<Help />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate replace to="/login" />}
+        />
         <Route
           path="/projects"
           element={user ? <Projects /> : <Navigate replace to="/login" />}
@@ -44,6 +52,7 @@ function App() {
             user ? <Navigate replace to="/projects" /> : <Registration />
           }
         />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </Router>
   );

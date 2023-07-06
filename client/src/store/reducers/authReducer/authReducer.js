@@ -4,6 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGOUT,
   REFRESH_DATA,
+  CLEAN_ERROR,
 } from "./actionTypes";
 
 const INITIAL_STATE = {
@@ -46,6 +47,11 @@ const authReducer = (state = INITIAL_STATE, action) => {
         isFetching: false,
         error: false,
       };
+    case CLEAN_ERROR:
+      return {
+        ...state,
+        error: false,
+      }
     default:
       return state;
   }

@@ -8,6 +8,7 @@ import {
   UPDATE_STYLES_SUCCESS,
   GET_BLOCK_STYLES_SUCCESS,
   REQUEST_FAILURE,
+  CLEAN_ERROR,
 } from "./actionTypes";
 
 const INITIAL_STATE = {
@@ -108,7 +109,11 @@ const blockReducer = (state = INITIAL_STATE, action) => {
         isFetching: false,
         error: action.payload,
       };
-
+    case CLEAN_ERROR:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

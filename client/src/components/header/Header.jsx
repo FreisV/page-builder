@@ -12,9 +12,14 @@ const Header = () => {
         <Link className={styles.logo} to={"/projects"}>
           Builder
         </Link>
-        <div className={styles.profile}>
-          <p>{username}</p>
-        </div>
+        <nav className={styles.nav}>
+          <Link className={styles.navLink} to={"/help"}>
+            <p>Помощь</p>
+          </Link>
+          <Link className={styles.navLink} to={"/profile"}>
+            <p>{username}</p>
+          </Link>
+        </nav>
       </div>
     </header>
   );

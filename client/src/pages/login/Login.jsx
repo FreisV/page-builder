@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import Link from "../../components/link/Link";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../store/reducers/authReducer/actions";
+import { cleanError, login } from "../../store/reducers/authReducer/actions";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 
 const Login = () => {
@@ -25,7 +25,8 @@ const Login = () => {
     if (errorMessage !== "") {
       setErrorMessageActive(true);
     }
-  }, [errorMessage]);
+    dispatch(cleanError());
+  }, [dispatch, errorMessage]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -47,12 +47,12 @@ const ChangeTeamBlockModal = ({ active, setActive, id }) => {
 
   const handleChangeImage2 = (e) => {
     e.preventDefault();
-    setImage(e.target.files[0]);
+    setImage2(e.target.files[0]);
   };
 
   const handleChangeImage3 = (e) => {
     e.preventDefault();
-    setImage(e.target.files[0]);
+    setImage3(e.target.files[0]);
   };
 
   const handleUpdate = async (e) => {

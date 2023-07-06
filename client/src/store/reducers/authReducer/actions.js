@@ -4,6 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGOUT,
   REFRESH_DATA,
+  CLEAN_ERROR
 } from "./actionTypes";
 import AuthService from "../../../services/AuthService";
 
@@ -30,6 +31,14 @@ export const logoutAction = () => ({
   type: LOGOUT,
   payload: null,
 });
+
+export const cleanErrorAction = () => ({
+  type: CLEAN_ERROR,
+})
+
+export const cleanError = () => dispatch => {
+  dispatch(cleanErrorAction());
+}
 
 export const login = (username, password) => async (dispatch) => {
   dispatch(loginStart());

@@ -10,6 +10,7 @@ import {
   UPDATE_STYLES_SUCCESS,
   GET_STYLES_SUCCESS,
   GET_BLOCK_STYLES_SUCCESS,
+  CLEAN_ERROR,
 } from "./actionTypes";
 
 export const requestStart = () => ({
@@ -53,6 +54,14 @@ export const requestFailure = (payload) => ({
   payload,
 });
 
+export const cleanErrorAction = () => ({
+  type: CLEAN_ERROR,
+});
+
+export const cleanError = () => (dispatch) => {
+  dispatch(cleanErrorAction());
+};
+
 export const getBlocks = (projectId) => async (dispatch) => {
   dispatch(requestStart());
   try {
@@ -72,7 +81,7 @@ export const createBlock = (projectId, blockData) => async (dispatch) => {
   try {
     const res = await BlockService.create(projectId, blockData);
     dispatch(createBlockSuccess(res.data));
-    dispatch(getBlockStyles(projectId, res.data.id))
+    dispatch(getBlockStyles(projectId, res.data.id));
   } catch (e) {
     const error = {
       status: e.response.status,

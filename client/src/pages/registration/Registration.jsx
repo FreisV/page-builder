@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import Link from "../../components/link/Link";
 import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { registration } from "../../store/reducers/authReducer/actions";
+import { cleanError, registration } from "../../store/reducers/authReducer/actions";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 
 const Registration = () => {
@@ -27,7 +27,8 @@ const Registration = () => {
     if (errorMessage !== "") {
       setErrorMessageActive(true);
     }
-  }, [errorMessage]);
+    dispatch(cleanError());
+  }, [dispatch, errorMessage]);
 
   const checkPasswordMatch = (e) => {
     if (password.current.value !== passwordRepeat.current.value) {

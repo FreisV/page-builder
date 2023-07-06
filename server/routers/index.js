@@ -11,6 +11,7 @@ const downloadController = require("../controllers/download-controller");
 const imageController = require("../controllers/image-controller");
 const multer = require("multer");
 const fs = require("fs");
+const checkProjectIsOpenMiddleware = require("../middlewares/check-project-is-open-middleware");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -75,7 +76,7 @@ router.put(
   upload.array("images", 3),
   blockController.update
 );
-router.get("/projects/:id/blocks", authMiddleware, blockController.getBlocks);
+router.get("/projects/:id/blocks", authMiddleware, checkProjectIsOpenMiddleware, blockController.getBlocks);
 router.get(
   "/projects/:id/blocks/:blockId",
   authMiddleware,
